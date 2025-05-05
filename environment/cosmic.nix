@@ -7,10 +7,6 @@
   services.desktopManager.cosmic.enable = true;
   services.desktopManager.cosmic.xwayland.enable = true;
   services.dbus.enable = true;
-  # xdg portal stuff
-  xdg.portal = {
-    enable = true;
-  };
   environment.systemPackages = with pkgs; [
     xdg-desktop-portal-cosmic
     cosmic-bg

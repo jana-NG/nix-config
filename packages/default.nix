@@ -6,6 +6,12 @@
 
   programs.dconf.enable = true;
 
+  #XDG Portals
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
   #Add Fonts
   fonts.fontDir.enable = true;
 

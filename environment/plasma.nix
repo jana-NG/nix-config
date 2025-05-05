@@ -10,10 +10,6 @@
   services.desktopManager.plasma6.enable = true;
   programs.kdeconnect.enable = true;
   services.dbus.enable = true;
-  # xdg portal stuff
-  xdg.portal = {
-    enable = true;
-  };
   environment.systemPackages = with pkgs; [
     kdePackages.isoimagewriter
     kdePackages.marknote
