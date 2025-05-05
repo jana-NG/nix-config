@@ -30,5 +30,6 @@
     fastfetch
     xorg.xrdb
     xorg.xeyes
+    ffmpeg-full
   ];
 }
