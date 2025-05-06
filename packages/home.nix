@@ -16,7 +16,6 @@
     protonvpn-gui
     qbittorrent
     yt-dlp
-    discord
     prismlauncher
     wineWowPackages.waylandFull
   ];

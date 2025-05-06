@@ -22,7 +22,6 @@
     kdePackages.plasma-firewall
     kdePackages.kweather
     kdePackages.kcalc
-    krita
     catppuccin-kde
     catppuccin-sddm
     (catppuccin-kde.override {

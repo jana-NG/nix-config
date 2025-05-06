@@ -4,6 +4,7 @@
   # Install firefox.
   programs.firefox.enable = true;
   programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
   programs.dconf.enable = true;
 
   #XDG Portals
@@ -37,5 +38,6 @@
     xorg.xrdb
     xorg.xeyes
     ffmpeg-full
+    krita
   ];
 }

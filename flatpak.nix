@@ -24,6 +24,7 @@
     "org.gtk.Gtk3theme.Breeze"
     "com.makemkv.MakeMKV"
     "fr.handbrake.ghb"
+    "com.discordapp.Discord"
   ];
   services.flatpak.overrides = {
     global = {
