@@ -33,7 +33,6 @@
     xsettingsd
     pciutils
     libreoffice-qt6
-    prismlauncher
     xorg.xrdb
     xorg.xeyes
     ffmpeg-full
