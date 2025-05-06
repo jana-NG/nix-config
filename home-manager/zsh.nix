@@ -9,9 +9,9 @@
     syntaxHighlighting.enable = true;
     shellAliases = {
       ll = "ls -l";
-      uppies = "sudo nixos-rebuild switch --upgrade";
-      nixrebuild = "sudo nixos-rebuild switch";
-      homerebuild = "home-manager switch -b backup";
+      uppies = "sudo nixos-rebuild switch --flake path:$HOME/.config/nixos/ --upgrade";
+      nixrebuild = "sudo nixos-rebuild switch --flake path:$HOME/.config/nixos/";
+      homerebuild = "home-manager switch --flake path:home-manager/ -b backup";
       nixedit = "kate ~/.config/nixos";
       homeedit = "kate ~/.config/home-manager";
     };
