@@ -8,7 +8,10 @@
   };
   programs.zed-editor.enable = true;
   programs.btop.enable = true;
-  programs.micro.enable = true;
+  programs.micro = {
+    enable = true;
+    package =  pkgs.micro-with-wl-clipboard;
+  };
   programs.fastfetch.enable = true;
   gtk.enable = true;
   catppuccin = {
