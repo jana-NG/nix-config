@@ -1,4 +1,5 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
 
   # Add a new remote. Keep the default one (flathub)
   #services.flatpak.remotes = lib.mkOptionDefault [{
@@ -32,4 +33,4 @@
       };
     };
   };
- }
+}

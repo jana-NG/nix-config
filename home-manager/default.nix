@@ -1,16 +1,21 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   home.sessionVariables = {
     EDITOR = "micro";
     NIXOS_OZONE_WL = "1";
-    ANI_CLI_PLAYER= "haruna";
+    ANI_CLI_PLAYER = "haruna";
   };
   programs.zed-editor.enable = true;
   programs.btop.enable = true;
   programs.micro = {
     enable = true;
-    package =  pkgs.micro-with-wl-clipboard;
+    package = pkgs.micro-with-wl-clipboard;
   };
   programs.fastfetch.enable = true;
   gtk.enable = true;

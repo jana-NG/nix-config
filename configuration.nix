@@ -54,8 +54,8 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
-                  "olm-3.2.16"
-                ];
+    "olm-3.2.16"
+  ];
 
   #Enable flakes
   nix.settings.experimental-features = [
