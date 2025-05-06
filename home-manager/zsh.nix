@@ -12,11 +12,14 @@
     autosuggestion.enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
+    initContent = ''
+      export ANI_CLI_PLAYER="haruna"
+    '';
     shellAliases = {
       ll = "ls -l";
-      uppies = "sudo nixos-rebuild switch --flake path:$HOME/.config/nixos/ --upgrade";
-      nixrebuild = "sudo nixos-rebuild switch --flake path:$HOME/.config/nixos/";
-      homerebuild = "home-manager switch --flake path:$HOME/.config/nixos/home-manager -b backup";
+      uppies = "nix flake update --inputs-from $HOME/.config/nixos/ && nix flake update --inputs-from $HOME/.config/nixos/home-manager && home-manager switch --flake path:$HOME/.config/nixos/home-manager -b backup && sudo nixos-rebuild switch --flake path:$HOME/.config/nixos/ --upgrade";
+      nixbuild = "sudo nixos-rebuild switch --flake path:$HOME/.config/nixos/";
+      homebuild = "home-manager switch --flake path:$HOME/.config/nixos/home-manager -b backup";
       nixedit = "kate ~/.config/nixos";
       homeedit = "kate ~/.config/home-manager";
     };
