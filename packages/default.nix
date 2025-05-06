@@ -29,11 +29,11 @@
     home-manager
     drawio
     haruna
-    btop
     nvtopPackages.full
     xsettingsd
     pciutils
-    fastfetch
+    libreoffice-qt6
+    prismlauncher
     xorg.xrdb
     xorg.xeyes
     ffmpeg-full

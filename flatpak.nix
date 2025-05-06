@@ -12,18 +12,12 @@
   # Add here the flatpaks you want to install
   services.flatpak.packages = [
     #{ appId = "com.brave.Browser"; origin = "flathub"; }
-    #"com.obsproject.Studio"
-    #"im.riot.Riot"
     "app.zen_browser.zen"
-    "org.libreoffice.LibreOffice"
     "org.gnome.World.PikaBackup"
     "com.github.KRTirtho.Spotube"
-    "com.discordapp.Discord"
     "com.github.tchx84.Flatseal"
-    "org.prismlauncher.PrismLauncher"
     "com.github.iwalton3.jellyfin-media-player"
     "md.obsidian.Obsidian"
-    "org.kde.krita"
     "com.geekbench.Geekbench6"
     "com.rustdesk.RustDesk"
     "org.gtk.Gtk3theme.Breeze"
