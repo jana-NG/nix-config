@@ -16,7 +16,7 @@
       ll = "ls -l";
       uppies = "sudo nixos-rebuild switch --flake path:$HOME/.config/nixos/ --upgrade";
       nixrebuild = "sudo nixos-rebuild switch --flake path:$HOME/.config/nixos/";
-      homerebuild = "home-manager switch --flake path:home-manager/ -b backup";
+      homerebuild = "home-manager switch --flake path:$HOME/.config/nixos/home-manager -b backup";
       nixedit = "kate ~/.config/nixos";
       homeedit = "kate ~/.config/home-manager";
     };

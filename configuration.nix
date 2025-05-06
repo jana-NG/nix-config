@@ -8,7 +8,6 @@
   imports = [
     ./hardware-configuration.nix
     ./packages/default.nix
-    ./packages/shell.nix
     ./packages/dev.nix
     ./packages/home.nix
     ./system/boot.nix

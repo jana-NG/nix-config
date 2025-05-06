@@ -25,6 +25,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     nil
+    libsecret
     nixfmt-rfc-style
     home-manager
     drawio
