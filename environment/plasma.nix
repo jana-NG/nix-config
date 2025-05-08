@@ -21,7 +21,7 @@
     kdePackages.neochat
     kdePackages.plasma-firewall
     kdePackages.kweather
-    kdePackages.kcalc
+    kdePackages.kalk
     catppuccin-kde
     catppuccin-sddm
     (catppuccin-kde.override {
