@@ -17,7 +17,7 @@
     '';
     shellAliases = {
       ll = "ls -l";
-      uppies = "nix flake update --inputs-from $HOME/.config/nixos/ && nix flake update --inputs-from $HOME/.config/nixos/home-manager && home-manager switch --flake path:$HOME/.config/nixos/home-manager -b backup && sudo nixos-rebuild switch --flake path:$HOME/.config/nixos/ --upgrade";
+      uppies = "nix flake update --flake path:$HOME/.config/nixos/ && nix flake update --flake path$HOME/.config/nixos/home-manager && home-manager switch --flake path:$HOME/.config/nixos/home-manager -b backup && sudo nixos-rebuild switch --flake path:$HOME/.config/nixos/ --upgrade";
       nixbuild = "sudo nixos-rebuild switch --flake path:$HOME/.config/nixos/";
       homebuild = "home-manager switch --flake path:$HOME/.config/nixos/home-manager -b backup";
       nixedit = "kate ~/.config/nixos";
