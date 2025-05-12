@@ -28,8 +28,8 @@
     ];
     allowedUDPPortRanges = [
       {
-        from = 4000;
-        to = 4007;
+        from = 1025;
+        to = 65535;
       }
     ];
   };
