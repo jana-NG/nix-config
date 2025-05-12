@@ -17,6 +17,20 @@
     ./environment/plasma.nix
   ];
 
+  #Open all non-well-known ports (i like my software to actually work)
+  networking.firewall.allowedTCPPorts = [
+    {
+      from = 1025;
+      to = 65535;
+    }
+  ];
+  networking.firewall.allowedUDPPorts = [
+    {
+      from = 1025;
+      to = 65535;
+    }
+  ];
+
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
