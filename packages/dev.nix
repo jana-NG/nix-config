@@ -4,6 +4,7 @@
   environment.systemPackages = with pkgs; [
     dtc
     rustup
+    rust-analyzer
     gcc
     vscode-fhs
   ];
