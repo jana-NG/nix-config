@@ -20,7 +20,7 @@
   #Open all non-well-known ports (i like my software to actually work)
   networking.firewall = {
     enable = true;
-    allowedTCPPortsRanges = [
+    allowedTCPPortRanges = [
       {
         from = 1025;
         to = 65535;
