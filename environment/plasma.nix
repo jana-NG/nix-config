@@ -22,6 +22,7 @@
     kdePackages.plasma-firewall
     kdePackages.kweather
     kdePackages.kalk
+    nur.repos.shadowrz.klassy-qt6
     catppuccin-kde
     catppuccin-sddm
     (catppuccin-kde.override {
