@@ -6,5 +6,7 @@
     rustup
     gcc
     vscode-fhs
+    openssl
+    pkg-config
   ];
 }
