@@ -1,7 +1,10 @@
 # this file contains config specific to my thinkpad a485
 { lib, pkgs, ... }:
 {
-
+  boot.kernelParams = [
+    "idle=nomwait"
+    "acpi_backlight=native"
+  ];
   networking.hostName = "nikkia485"; # Define your hostname.
 
   # Power Management
