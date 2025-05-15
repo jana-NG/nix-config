@@ -4,6 +4,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,6 +20,7 @@
       nixpkgs,
       nix-flatpak,
       nur,
+      nixos-cosmic,
       ...
     }@inputs:
     let
@@ -26,10 +31,17 @@
       nixosConfigurations.nikkia485 = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
+          {
+            nix.settings = {
+              substituters = [ "https://cosmic.cachix.org/" ];
+              trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+            };
+          }
           nur.modules.nixos.default
           nix-flatpak.nixosModules.nix-flatpak
           ./configuration.nix
           ./flatpak.nix
+          nixos-cosmic.nixosModules.default
         ];
       };
     };
