@@ -6,6 +6,13 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   programs.dconf.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 4;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 1w";
+  };
+  nix.settings.auto-optimise-store = true;
 
   #XDG Portals
   xdg.portal = {
