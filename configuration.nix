@@ -15,6 +15,7 @@
     ./hardware/default.nix
     ./hardware/a485.nix
     ./environment/plasma.nix
+    ./environment/cosmic.nix
   ];
 
   #Open all non-well-known ports (i like my software to actually work)

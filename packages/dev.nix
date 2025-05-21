@@ -8,5 +8,6 @@
     vscode-fhs
     openssl
     pkg-config
+    arduino-ide
   ];
 }
