@@ -13,7 +13,7 @@
     ./system/boot.nix
     ./system/services.nix
     ./hardware/default.nix
-    ./hardware/a485.nix
+    ./hardware/x13g1amd.nix
     ./environment/plasma.nix
     ./environment/cosmic.nix
   ];
