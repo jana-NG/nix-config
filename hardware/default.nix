@@ -2,12 +2,47 @@
 { lib, pkgs, ... }:
 {
 
+  # Set your time zone.
+  time.timeZone = "Europe/Berlin";
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "de_DE.UTF-8";
+    LC_IDENTIFICATION = "de_DE.UTF-8";
+    LC_MEASUREMENT = "de_DE.UTF-8";
+    LC_MONETARY = "de_DE.UTF-8";
+    LC_NAME = "de_DE.UTF-8";
+    LC_NUMERIC = "de_DE.UTF-8";
+    LC_PAPER = "de_DE.UTF-8";
+    LC_TELEPHONE = "de_DE.UTF-8";
+    LC_TIME = "de_DE.UTF-8";
+  };
+
   # Enable networking
   networking = {
     networkmanager = {
       enable = true;
       wifi.powersave = false;
     };
+  };
+
+  #Open all non-well-known ports (i like my software to actually work)
+  networking.firewall = {
+    enable = true;
+    allowedTCPPortRanges = [
+      {
+        from = 1025;
+        to = 65535;
+      }
+    ];
+    allowedUDPPortRanges = [
+      {
+        from = 1025;
+        to = 65535;
+      }
+    ];
   };
 
   hardware.graphics = {
@@ -22,6 +57,12 @@
     layout = "us";
     variant = "de_se_fi";
   };
+
+  #Enable flakes
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
