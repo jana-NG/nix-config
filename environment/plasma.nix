@@ -2,10 +2,10 @@
 { pkgs, ... }:
 {
   # Configure SDDM
-  services.displayManager.sddm = {
-    enable = true;
-    theme = "catppuccin-mocha";
-  };
+  #services.displayManager.sddm = {
+  #  enable = true;
+  #  theme = "catppuccin-mocha";
+  #};
   # Enable the KDE Plasma Desktop Environment.
   services.desktopManager.plasma6.enable = true;
   programs.kdeconnect.enable = true;

@@ -2,7 +2,7 @@
 { pkgs, ... }:
 {
   # Enable Cosmic Greeter
-  # services.displayManager.cosmic-greeter.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
   # Enable Cosmic
   services.desktopManager.cosmic.enable = true;
   services.dbus.enable = true;
