@@ -26,6 +26,9 @@
   hardware.enableRedistributableFirmware = true;
   services.fwupd.enable = true;
 
+  #Fingerprint sensor
+  services.fprintd.enable = true;
+
   environment.systemPackages = with pkgs; [
     ryzenadj
   ];
