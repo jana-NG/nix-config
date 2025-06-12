@@ -25,6 +25,7 @@
     "com.makemkv.MakeMKV"
     "fr.handbrake.ghb"
     "com.discordapp.Discord"
+    "org.kde.kamoso"
   ];
   services.flatpak.overrides = {
     global = {
