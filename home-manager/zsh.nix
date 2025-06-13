@@ -18,8 +18,8 @@
     shellAliases = {
       ll = "ls -l";
       uppies = "nix flake update --flake path:$HOME/.config/nixos && nix flake update --flake path:$HOME/.config/nixos/home-manager && home-manager switch --flake path:$HOME/.config/nixos/home-manager -b backup && sudo nixos-rebuild switch --flake path:$HOME/.config/nixos --upgrade";
-      nixbuild = "sudo nixos-rebuild switch --flake path:$HOME/.config/nixos/";
-      homebuild = "home-manager switch --flake path:$HOME/.config/nixos/home-manager -b backup";
+      nrs = "sudo nixos-rebuild switch --flake path:$HOME/.config/nixos/";
+      hrs = "home-manager switch --flake path:$HOME/.config/nixos/home-manager -b backup";
       nixedit = "kate ~/.config/nixos";
       homeedit = "kate ~/.config/home-manager";
     };

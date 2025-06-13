@@ -31,6 +31,7 @@
 
   environment.systemPackages = with pkgs; [
     ryzenadj
+    powertop
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
