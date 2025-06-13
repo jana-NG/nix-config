@@ -41,6 +41,7 @@
     nvtopPackages.full
     xsettingsd
     pciutils
+    usbutils
     libreoffice-qt6
     xorg.xrdb
     xorg.xeyes
