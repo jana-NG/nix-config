@@ -9,5 +9,6 @@
     openssl
     pkg-config
     arduino-ide
+    rpi-imager
   ];
 }
