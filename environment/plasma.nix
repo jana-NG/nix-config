@@ -21,6 +21,7 @@
     kdePackages.plasma-firewall
     kdePackages.kweather
     kdePackages.kalk
+    kdePackages.filelight
     nur.repos.shadowrz.klassy-qt6
     catppuccin-kde
     catppuccin-sddm
