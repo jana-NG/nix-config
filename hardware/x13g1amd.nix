@@ -10,7 +10,6 @@
     ../system/services.nix
     ../hardware/default.nix
     ../environment/plasma.nix
-    ../environment/cosmic.nix
   ];
 
   boot.kernelParams = [
@@ -21,6 +20,8 @@
 
   # Power Management
   powerManagement.enable = true;
+  services.power-profiles-daemon.enable = false;
+  powerManagement.cpuFreqGovernor = "schedutil";
   services.tlp = {
     enable = true;
     settings = {
@@ -41,6 +42,19 @@
 
     };
   };
+
+  # block bluetooth to prevent it disappearing
+  powerManagement.powerDownCommands = ''
+    echo "Pre-Sleep Bluetooth block"
+    ${pkgs.util-linux}/bin/rfkill block bluetooth
+  '';
+
+  # unblock bluetooth
+  powerManagement.resumeCommands = ''
+    sleep 5
+    echo "Post-Resume Bluetooth unblock."
+    ${pkgs.util-linux}/bin/rfkill unblock bluetooth
+  '';
 
   # Firmware updates
   hardware.enableRedistributableFirmware = true;

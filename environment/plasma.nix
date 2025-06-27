@@ -15,7 +15,6 @@
     kdePackages.marknote
     kdePackages.plasma-disks
     kdePackages.kclock
-    kdePackages.powerdevil
     kdePackages.kdeplasma-addons
     kdePackages.kate
     kdePackages.neochat
