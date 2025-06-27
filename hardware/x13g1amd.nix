@@ -10,6 +10,8 @@
     ../system/services.nix
     ../hardware/default.nix
     ../environment/plasma.nix
+    #../environment/cosmic.nix
+    #../environment/niri.nix
   ];
 
   boot.kernelParams = [
