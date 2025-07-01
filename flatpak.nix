@@ -26,6 +26,7 @@
     "fr.handbrake.ghb"
     "com.discordapp.Discord"
     "org.kde.kamoso"
+    "de.bund.ausweisapp.ausweisapp2"
   ];
   services.flatpak.overrides = {
     global = {
