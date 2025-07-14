@@ -62,6 +62,9 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
+          {
+            nix.settings.trusted-users = [ "nikki" ];
+          }
           nur.modules.nixos.default
           nix-flatpak.nixosModules.nix-flatpak
           ./hardware/a485.nix
