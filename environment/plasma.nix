@@ -22,6 +22,7 @@
     kdePackages.kweather
     kdePackages.kalk
     kdePackages.filelight
+    kdePackages.krecorder
     nur.repos.shadowrz.klassy-qt6
     catppuccin-kde
     catppuccin-sddm

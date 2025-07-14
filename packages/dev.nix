@@ -1,15 +1,20 @@
 # this file contains development stuff
-{ pkgs, ... }:
+{ pkgs, pkgs-stable, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    dtc
-    rustup
-    gcc
-    vscode-fhs
-    openssl
-    pkg-config
-    arduino-ide
-    rpi-imager
-    plantuml
-  ];
+  environment.systemPackages =
+    (with pkgs; [
+      dtc
+      rustup
+      gcc
+      vscode-fhs
+      openssl
+      pkg-config
+    ])
+
+    ++
+
+      (with pkgs-stable; [
+        arduino-ide
+        rpi-imager
+      ]);
 }

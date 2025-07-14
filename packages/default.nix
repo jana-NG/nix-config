@@ -1,5 +1,9 @@
 # this file contains basic programs i use
-{ lib, pkgs, ... }:
+{
+  pkgs,
+  pkgs-stable,
+  ...
+}:
 {
   # Install firefox.
   security.sudo-rs.enable = true;
@@ -32,21 +36,27 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    nil
-    libsecret
-    nixfmt-rfc-style
-    home-manager
-    drawio
-    haruna
-    nvtopPackages.full
-    xsettingsd
-    pciutils
-    usbutils
-    libreoffice-qt6
-    xorg.xrdb
-    xorg.xeyes
-    ffmpeg-full
-    krita
-  ];
+  environment.systemPackages =
+    (with pkgs; [
+      nil
+      libsecret
+      nixfmt-rfc-style
+      home-manager
+      haruna
+      nvtopPackages.full
+      xsettingsd
+      xorg.xrdb
+      ffmpeg-full
+      krita
+    ])
+
+    ++
+
+      (with pkgs-stable; [
+        libreoffice-qt6
+        pciutils
+        usbutils
+        xorg.xeyes
+        drawio
+      ]);
 }

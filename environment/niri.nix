@@ -1,5 +1,5 @@
 # this file contains configuration for niri
-{ pkgs, ... }:
+{ pkgs, pkgs-stable, ... }:
 {
   #enable niri
   programs.niri.enable = true;
