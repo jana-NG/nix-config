@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ ... }:
 {
 
   # Add a new remote. Keep the default one (flathub)
@@ -15,7 +15,6 @@
     #{ appId = "com.brave.Browser"; origin = "flathub"; }
     "app.zen_browser.zen"
     "org.gnome.World.PikaBackup"
-    "com.github.KRTirtho.Spotube"
     "com.github.tchx84.Flatseal"
     "com.github.iwalton3.jellyfin-media-player"
     "md.obsidian.Obsidian"
