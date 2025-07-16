@@ -1,4 +1,4 @@
-# this file contains config specific to my thinkpad a485
+# this file contains config specific to my thinkpad x13 gen 1 (amd)
 { pkgs, ... }:
 {
   imports = [
