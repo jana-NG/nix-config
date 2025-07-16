@@ -61,11 +61,13 @@
       };
       nixosConfigurations.nikkia485 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs;
-        pkgs-stable = import nixpkgs-stable {
+        specialArgs = {
+          inherit inputs;
+          pkgs-stable = import nixpkgs-stable {
             system = "x86_64-linux";
             config.allowUnfree = true;
-          };};
+          };
+        };
         modules = [
           {
             nix.settings.trusted-users = [ "nikki" ];
@@ -79,11 +81,13 @@
       };
       nixosConfigurations.nikkiminibook = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs;
-        pkgs-stable = import nixpkgs-stable {
+        specialArgs = {
+          inherit inputs;
+          pkgs-stable = import nixpkgs-stable {
             system = "x86_64-linux";
             config.allowUnfree = true;
-          };};
+          };
+        };
         modules = [
           {
             nix.settings.trusted-users = [ "nikki" ];
