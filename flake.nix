@@ -16,6 +16,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    catppuccin.url = "github:catppuccin/nix";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     nixos-cosmic = {
@@ -24,6 +25,14 @@
     };
     nur = {
       url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.05";
+      # The `follows` keyword in inputs is used for inheritance.
+      # Here, `inputs.nixpkgs` of home-manager is kept consistent with
+      # the `inputs.nixpkgs` of the current flake,
+      # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -36,6 +45,8 @@
       nix-flatpak,
       nur,
       nixos-cosmic,
+      home-manager,
+      catppuccin,
       ...
     }@inputs:
     {
@@ -51,6 +62,19 @@
         modules = [
           {
             nix.settings.trusted-users = [ "nikki" ];
+          }
+          catppuccin.nixosModules.catppuccin
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.nikki = {
+            imports = [
+              ./home-manager/home.nix
+              catppuccin.homeManagerModules.catppuccin
+            ];
+            };
+            # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
           }
           nur.modules.nixos.default
           nix-flatpak.nixosModules.nix-flatpak
@@ -72,6 +96,20 @@
           {
             nix.settings.trusted-users = [ "nikki" ];
           }
+          catppuccin.nixosModules.catppuccin
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.nikki = {
+            imports = [
+              ./home-manager/home.nix
+              catppuccin.homeManagerModules.catppuccin
+            ];
+            };
+
+            # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
+          }
           nur.modules.nixos.default
           nix-flatpak.nixosModules.nix-flatpak
           ./hardware/a485.nix
@@ -91,6 +129,20 @@
         modules = [
           {
             nix.settings.trusted-users = [ "nikki" ];
+          }
+          catppuccin.nixosModules.catppuccin
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.nikki = {
+            imports = [
+              ./home-manager/home.nix
+              catppuccin.homeManagerModules.catppuccin
+            ];
+            };
+
+            # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
           }
           nur.modules.nixos.default
           nix-flatpak.nixosModules.nix-flatpak

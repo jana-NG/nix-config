@@ -41,7 +41,6 @@
       nil
       libsecret
       nixfmt-rfc-style
-      home-manager
       haruna
       nvtopPackages.full
       xsettingsd
