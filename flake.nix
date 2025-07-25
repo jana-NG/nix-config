@@ -151,5 +151,39 @@
           nixos-cosmic.nixosModules.default
         ];
       };
+      nixosConfigurations.nikkiworkstation = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          pkgs-stable = import nixpkgs-stable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+        };
+        modules = [
+          {
+            nix.settings.trusted-users = [ "nikki" ];
+          }
+          catppuccin.nixosModules.catppuccin
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.nikki = {
+            imports = [
+              ./home-manager/home.nix
+              catppuccin.homeModules.catppuccin
+            ];
+            };
+
+            # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
+          }
+          nur.modules.nixos.default
+          nix-flatpak.nixosModules.nix-flatpak
+          ./hardware/workstation.nix
+          ./flatpak.nix
+          nixos-cosmic.nixosModules.default
+        ];
+      };
     };
 }
