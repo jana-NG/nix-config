@@ -135,6 +135,7 @@
     22
     80
     443
+    8080
   ];
   networking.firewall.allowedUDPPorts = [ ];
   # Or disable the firewall altogether.

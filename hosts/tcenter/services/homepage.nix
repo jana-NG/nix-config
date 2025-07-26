@@ -3,8 +3,8 @@
   services.homepage-dashboard = {
     enable = true;
     openFirewall = true;
-    listenPort = 80;
+    listenPort = 8080;
     package = pkgs-stable.homepage-dashboard;
-    allowedHosts = "tcenter.fritz.box:80";
+    allowedHosts = "tcenter.fritz.box:8080";
   };
 }
