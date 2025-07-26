@@ -150,6 +150,7 @@
     443
     8080
     8081
+    8123
     61208
   ];
   networking.firewall.allowedUDPPorts = [ ];
