@@ -39,6 +39,25 @@
       "dmask=0077"
     ];
   };
+  fileSystems."/run/mount/hdd0" = {
+    device = "/dev/disk/by-uuid/a3cfa47f-f5c8-4c68-9ffe-ddffa0cb00d8";
+    fsType = "ext4";
+    options = [
+      "users" # Allows any user to mount and unmount
+      "nofail" # Prevent system from failing if this drive doesn't mount
+      "exec" # Permit execution of binaries and other executable files
+    ];
+  };
+
+  fileSystems."/run/mount/ssd0" = {
+    device = "/dev/disk/by-uuid/3123a72a-3750-4fb9-8c85-71834e0155fe";
+    fsType = "ext4";
+    options = [
+      "users" # Allows any user to mount and unmount
+      "nofail" # Prevent system from failing if this drive doesn't mount
+      "exec" # Permit execution of binaries and other executable files
+    ];
+  };
 
   swapDevices = [
     { device = "/dev/disk/by-uuid/0c605bde-0a0b-4da5-abad-e121dc9322de"; }

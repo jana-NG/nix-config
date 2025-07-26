@@ -1,4 +1,3 @@
-# this file contains misc service configuration
 { ... }:
 {
   virtualisation.docker = {

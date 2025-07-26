@@ -1,5 +1,5 @@
 # this file contains universal hardware config
-{ lib, pkgs, ... }:
+{ lib, pkgs-stable, ... }:
 {
 
   imports = [
@@ -22,7 +22,7 @@
       "wheel"
       "docker"
     ];
-    packages = with pkgs; [ git ];
+    packages = with pkgs-stable; [ git ];
   };
 
   services.smartd = {
@@ -47,7 +47,7 @@
   # Install firefox.
   security.sudo-rs.enable = true;
   programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs-stable.zsh;
   boot.loader.systemd-boot.configurationLimit = 4;
   nix.gc = {
     automatic = true;
@@ -89,6 +89,13 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
+    extraPackages = with pkgs-stable; [
+      intel-media-driver # For Broadwell (2014) or newer processors. LIBVA_DRIVER_NAME=iHD
+      libva-vdpau-driver # Previously vaapiVdpau
+      intel-compute-runtime-legacy1
+      intel-media-sdk # QSV up to 11th gen
+      intel-ocl # OpenCL support
+    ];
   };
 
   # Enable Bluetooth
