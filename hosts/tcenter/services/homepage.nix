@@ -1,5 +1,9 @@
 { pkgs-stable, ... }:
 {
+  services.glances = {
+    enable = true;
+    openFirewall = true;
+  };
   services.homepage-dashboard = {
     enable = true;
     openFirewall = true;
@@ -15,13 +19,26 @@
     # https://gethomepage.dev/configs/services/
     services = [
       {
-        jellyfin = {
-          url = "http://tcenter.fritz.box:8096";
-          enableBlocks = true;
-          enableNowPlaying = true;
-          enableUser = true;
-        };
+        "Tools" = [
+          {
+            "File Browser" = {
+              description = "Simple and powerful file browser";
+              href = "https://tcenter.fritz.box:8081";
+            };
+          }
+        ];
       }
+      {
+        "Media" = [
+          {
+            "Jellyfin" = {
+              description = "Media Library";
+              href = "http://tcenter.fritz.box:8096";
+            };
+          }
+        ];
+      }
+
     ];
 
     # https://gethomepage.dev/widgets/
@@ -30,6 +47,15 @@
         search = {
           provider = "duckduckgo";
           target = "_blank";
+        };
+        Info = {
+          widget = {
+            type = "glances";
+            url = "http://localhost:61208";
+            metric = "info";
+            chart = true;
+            version = 4;
+          };
         };
       }
     ];
