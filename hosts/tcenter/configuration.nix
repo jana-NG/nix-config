@@ -48,7 +48,17 @@
 
   # Install firefox.
   security.sudo-rs.enable = true;
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    autosuggestion.enable = true;
+    enableCompletion = true;
+    syntaxHighlighting.enable = true;
+    shellAliases = {
+      ll = "ls -l";
+      uppies = "nix flake update --flake path:/etc/nixos && sudo nixos-rebuild switch --flake path:/etc/nixos --upgrade";
+      nrs = "sudo git -C /etc/nixos pull && sudo nixos-rebuild switch --flake path:/etc/nixos";
+    };
+  };
   users.defaultUserShell = pkgs-stable.zsh;
   boot.loader.systemd-boot.configurationLimit = 4;
   nix.gc = {
