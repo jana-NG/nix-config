@@ -24,6 +24,7 @@
       "networkmanager"
       "wheel"
       "docker"
+      "tcenterdrive"
     ];
     packages = with pkgs-stable; [ git ];
   };
