@@ -5,6 +5,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./docker.nix
   ];
 
   # Bootloader.
@@ -19,8 +20,13 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
     ];
     packages = with pkgs; [ ];
+  };
+
+  services.smartd = {
+    enable = true;
   };
 
   # Select internationalisation properties.
@@ -37,6 +43,18 @@
     LC_TELEPHONE = "de_DE.UTF-8";
     LC_TIME = "de_DE.UTF-8";
   };
+
+  # Install firefox.
+  security.sudo-rs.enable = true;
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+  boot.loader.systemd-boot.configurationLimit = 4;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 14d";
+  };
+  nix.settings.auto-optimise-store = true;
 
   # Enable networking
   networking = {
