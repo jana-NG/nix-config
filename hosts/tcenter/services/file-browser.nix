@@ -20,15 +20,16 @@
       Restart = "on-failure";
       ExecStart = pkgs-stable.writeShellScript "start-tcenterdrive" ''
         ${pkgs-stable.filebrowser}/bin/filebrowser config set \
-         --database /var/lib/tcenterdrive/filebrowser.db \
-         --branding.name "tcenterDrive"
+          --database /var/lib/tcenterdrive/filebrowser.db \
+          --branding.name "tcenterDrive"
 
         ${pkgs-stable.filebrowser}/bin/filebrowser \
-         --port 8081 \
-         --database /var/lib/tcenterdrive/filebrowser.db \
-         --root /var/lib/tcenterdrive/ \
-         --cache-dir /var/cache/tcenterdrive \
-         --disable-exec
+          --port 8081 \
+          --address "192.168.178.45" \
+          --database /var/lib/tcenterdrive/filebrowser.db \
+          --root /var/lib/tcenterdrive/ \
+          --cache-dir /var/cache/tcenterdrive \
+          --disable-exec
       '';
     };
   };

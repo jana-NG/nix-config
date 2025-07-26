@@ -23,7 +23,7 @@
           {
             "File Browser" = {
               description = "Simple and powerful file browser";
-              href = "https://tcenter.fritz.box:8081";
+              href = "http://tcenter.fritz.box:8081";
             };
           }
         ];
