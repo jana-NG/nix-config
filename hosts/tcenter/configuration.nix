@@ -9,6 +9,7 @@
     ./services/homepage.nix
     ./services/jellyfin.nix
     ./services/file-browser.nix
+    ./services/home-assistant.nix
   ];
 
   # Bootloader.
