@@ -18,7 +18,7 @@
       Type = "simple";
       User = "tcenterdrive";
       Restart = "on-failure";
-      ExecStart = ''
+      ExecStart = pkgs-stable.writeShellScript "start-tcenterdrive" ''
         ${pkgs-stable.filebrowser}/bin/filebrowser config set \
          --database /var/lib/tcenterdrive/filebrowser.db \
          --branding.name "tcenterDrive"
