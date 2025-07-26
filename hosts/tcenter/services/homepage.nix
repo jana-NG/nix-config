@@ -13,10 +13,7 @@
     bookmarks = [ ];
 
     # https://gethomepage.dev/configs/services/
-    services = [ ];
-
-    # https://gethomepage.dev/widgets/
-    widgets = [
+    services = [
       {
         jellyfin = {
           url = "http://tcenter.fritz.box:8096";
@@ -25,6 +22,10 @@
           enableUser = true;
         };
       }
+    ];
+
+    # https://gethomepage.dev/widgets/
+    widgets = [
       {
         search = {
           provider = "duckduckgo";
