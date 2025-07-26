@@ -8,7 +8,7 @@
   systemd.tmpfiles.rules = [
     "d /var/lib/tcenterdrive 0770 tcenterdrive tcenterdrive"
     "d /var/lib/tcenterdrive/storage 0770 tcenterdrive tcenterdrive"
-    "d /var/lib/tcenterdrive/cache 0770 tcenterdrive tcenterdrive"
+    "d /var/cache/tcenterdrive 0770 tcenterdrive tcenterdrive"
   ];
 
   systemd.services.tcenterdrive = {
