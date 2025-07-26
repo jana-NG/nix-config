@@ -1,5 +1,9 @@
 { pkgs-stable, ... }:
 {
+  services.glances = {
+    enable = true;
+    openFirewall = true;
+  };
   services.homepage-dashboard = {
     enable = true;
     openFirewall = true;
@@ -43,6 +47,15 @@
         search = {
           provider = "duckduckgo";
           target = "_blank";
+        };
+        Info = {
+          widget = {
+            type = "glances";
+            url = "http://localhost:61208";
+            metric = "info";
+            chart = true;
+            version = 4;
+          };
         };
       }
     ];
