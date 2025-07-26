@@ -50,7 +50,7 @@
   security.sudo-rs.enable = true;
   programs.zsh = {
     enable = true;
-    autosuggestion.enable = true;
+    autosuggestions.enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
     shellAliases = {
