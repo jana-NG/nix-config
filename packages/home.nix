@@ -5,6 +5,7 @@
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+    extraCompatPackages = [ pkgs.proton-ge-bin ];
   };
   programs.gamemode.enable = true;
   programs.steam.gamescopeSession.enable = true;

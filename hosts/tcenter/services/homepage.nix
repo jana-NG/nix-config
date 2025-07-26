@@ -6,7 +6,6 @@
   };
   services.homepage-dashboard = {
     enable = true;
-    openFirewall = true;
     listenPort = 8080;
     package = pkgs-stable.homepage-dashboard;
     allowedHosts = "tcenter.fritz.box:8080";
@@ -26,6 +25,12 @@
               href = "http://tcenter.fritz.box:8081";
             };
           }
+          {
+            "Home Assistant" = {
+              description = "Smart Home Controller";
+              href = "http://tcenter.fritz.box:8123";
+            };
+          }
         ];
       }
       {
@@ -38,7 +43,6 @@
           }
         ];
       }
-
     ];
   };
 }
