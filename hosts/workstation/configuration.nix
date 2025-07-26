@@ -2,16 +2,14 @@
 { pkgs, ... }:
 {
   imports = [
-    workstation/hardware-configuration.nix
-    ../packages/default.nix
-    ../packages/dev.nix
-    ../packages/home.nix
-    ../system/boot.nix
-    ../system/services.nix
-    ../hardware/default.nix
-    ../environment/plasma.nix
-    #../environment/cosmic.nix
-    #../environment/niri.nix
+    ./hardware-configuration.nix
+    ../default/configuration.nix
+    ../../packages/default.nix
+    ../../packages/dev.nix
+    ../../packages/home.nix
+    ../../system/boot.nix
+    ../../system/services.nix
+    ../../environment/plasma.nix
   ];
 
   #boot.kernelParams = [

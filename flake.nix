@@ -50,6 +50,9 @@
       ...
     }@inputs:
     {
+
+    #  -- x13 gen 1 amd --
+
       nixosConfigurations.nikkix13g1 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
@@ -78,11 +81,14 @@
           }
           nur.modules.nixos.default
           nix-flatpak.nixosModules.nix-flatpak
-          ./hardware/x13g1amd.nix
+          ./hosts/x13g1amd/configuration.nix
           ./flatpak.nix
           nixos-cosmic.nixosModules.default
         ];
       };
+
+      #  -- a485 --
+
       nixosConfigurations.nikkia485 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
@@ -112,11 +118,14 @@
           }
           nur.modules.nixos.default
           nix-flatpak.nixosModules.nix-flatpak
-          ./hardware/a485.nix
+          ./hosts/a485/configuration.nix
           ./flatpak.nix
           nixos-cosmic.nixosModules.default
         ];
       };
+
+      #  -- minibook x --
+
       nixosConfigurations.nikkiminibook = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
@@ -146,11 +155,14 @@
           }
           nur.modules.nixos.default
           nix-flatpak.nixosModules.nix-flatpak
-          ./hardware/minibook.nix
+          ./hosts/minibook/configuration.nix
           ./flatpak.nix
           nixos-cosmic.nixosModules.default
         ];
       };
+
+      #  -- workstation --
+
       nixosConfigurations.nikkiworkstation = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
@@ -180,9 +192,28 @@
           }
           nur.modules.nixos.default
           nix-flatpak.nixosModules.nix-flatpak
-          ./hardware/workstation.nix
+          ./hosts/workstation/configuration.nix
           ./flatpak.nix
           nixos-cosmic.nixosModules.default
+        ];
+      };
+
+      #  -- home server --
+
+      nixosConfigurations.tcenter = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          pkgs-stable = import nixpkgs-stable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+        };
+        modules = [
+          {
+            nix.settings.trusted-users = [ "admin" ];
+          }
+          ./hosts/tcenter/configuration.nix
         ];
       };
     };

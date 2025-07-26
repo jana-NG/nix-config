@@ -1,29 +1,33 @@
-# this file contains config specific to my chuwi minibook x
+# this file contains config specific to my thinkpad a485
 { pkgs, ... }:
 {
   imports = [
-    minibook/hardware-configuration.nix
-    ../packages/default.nix
-    ../packages/dev.nix
-    ../packages/home.nix
-    ../system/boot.nix
-    ../system/services.nix
-    ../hardware/default.nix
-    ../environment/plasma.nix
-    #../environment/cosmic.nix
-    #../environment/niri.nix
+    ./hardware-configuration.nix
+    ../default/configuration.nix
+    ../../packages/default.nix
+    ../../packages/dev.nix
+    ../../packages/home.nix
+    ../../system/boot.nix
+    ../../system/services.nix
+    ../../environment/plasma.nix
   ];
 
   boot.kernelParams = [
-    "fbcon=rotate:1"
+    "idle=nomwait"
+    "acpi_backlight=native"
   ];
-  networking.hostName = "nikkiminibook"; # Define your hostname.
+  networking.hostName = "nikkia485"; # Define your hostname.
 
   # Power Management
   powerManagement.enable = true;
   services.power-profiles-daemon.enable = true;
+
+  # Firmware updates
+  hardware.enableRedistributableFirmware = true;
+  services.fwupd.enable = true;
+
   environment.systemPackages = with pkgs; [
-    powertop
+    ryzenadj
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -51,6 +55,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 
 }
