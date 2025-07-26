@@ -1,7 +1,7 @@
 # this file contains misc service configuration
 { ... }:
 {
-  virtualization.docker = {
+  virtualisation.docker = {
     enable = true;
     rootless = {
       enable = true;

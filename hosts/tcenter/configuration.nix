@@ -22,7 +22,7 @@
       "wheel"
       "docker"
     ];
-    packages = with pkgs; [ ];
+    packages = with pkgs; [ git ];
   };
 
   services.smartd = {
