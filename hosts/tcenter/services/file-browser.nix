@@ -8,6 +8,7 @@
   systemd.tmpfiles.rules = [
     "d /var/lib/tcenterdrive 0770 tcenterdrive tcenterdrive"
     "d /var/lib/tcenterdrive/storage 0770 tcenterdrive tcenterdrive"
+    "d /var/lib/tcenterdrive/cache 0770 tcenterdrive tcenterdrive"
   ];
 
   systemd.services.tcenterdrive = {
@@ -19,15 +20,15 @@
       Restart = "on-failure";
       ExecStart = ''
         ${pkgs-stable.filebrowser}/bin/filebrowser config set \
-           --database /var/lib/tcenterdrive/filebrowser.db \
-           --branding.name "tcenterDrive"
+         --database /var/lib/tcenterdrive/filebrowser.db \
+         --branding.name "tcenterDrive"
 
-          ${pkgs-stable.filebrowser}/bin/filebrowser \
-           --port 8081 \
-           --database /var/lib/tcenterdrive/filebrowser.db \
-           --root /var/lib/tcenterdrive/ \
-           --cache-dir /var/cache/tcenterdrive \
-           --disable-exec
+        ${pkgs-stable.filebrowser}/bin/filebrowser \
+         --port 8081 \
+         --database /var/lib/tcenterdrive/filebrowser.db \
+         --root /var/lib/tcenterdrive/ \
+         --cache-dir /var/cache/tcenterdrive \
+         --disable-exec
       '';
     };
   };
