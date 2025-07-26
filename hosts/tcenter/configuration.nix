@@ -6,6 +6,8 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./docker/docker.nix
+    ./services/homepage.nix
+    ./services/jellyfin.nix
   ];
 
   # Bootloader.
