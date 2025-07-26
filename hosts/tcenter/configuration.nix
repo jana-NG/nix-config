@@ -8,6 +8,7 @@
     ./docker/docker.nix
     ./services/homepage.nix
     ./services/jellyfin.nix
+    ./services/homepage.nix
   ];
 
   # Bootloader.
