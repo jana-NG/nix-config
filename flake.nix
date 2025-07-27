@@ -51,7 +51,7 @@
     }@inputs:
     {
 
-    #  -- x13 gen 1 amd --
+      #  -- x13 gen 1 amd --
 
       nixosConfigurations.nikkix13g1 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -72,10 +72,10 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.nikki = {
-            imports = [
-              ./home-manager/home.nix
-              catppuccin.homeManagerModules.catppuccin
-            ];
+              imports = [
+                ./home-manager/home.nix
+                catppuccin.homeManagerModules.catppuccin
+              ];
             };
             # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
           }
@@ -108,10 +108,10 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.nikki = {
-            imports = [
-              ./home-manager/home.nix
-              catppuccin.homeManagerModules.catppuccin
-            ];
+              imports = [
+                ./home-manager/home.nix
+                catppuccin.homeManagerModules.catppuccin
+              ];
             };
 
             # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
@@ -145,10 +145,10 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.nikki = {
-            imports = [
-              ./home-manager/home.nix
-              catppuccin.homeModules.catppuccin
-            ];
+              imports = [
+                ./home-manager/home.nix
+                catppuccin.homeModules.catppuccin
+              ];
             };
 
             # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
@@ -182,10 +182,11 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.nikki = {
-            imports = [
-              ./home-manager/home.nix
-              catppuccin.homeModules.catppuccin
-            ];
+              imports = [
+                ./home-manager/home.nix
+                ./home-manager/niri/niri.nix
+                catppuccin.homeModules.catppuccin
+              ];
             };
 
             # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix

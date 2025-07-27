@@ -10,6 +10,7 @@
     ../../system/boot.nix
     ../../system/services.nix
     ../../environment/plasma.nix
+    ../../environment/niri.nix
   ];
 
   #boot.kernelParams = [
