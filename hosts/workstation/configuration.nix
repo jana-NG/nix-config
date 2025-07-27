@@ -16,6 +16,8 @@
   #];
   networking.hostName = "nikkiworkstation"; # Define your hostname.
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   # Power Management
   powerManagement.enable = true;
   services.power-profiles-daemon.enable = true;

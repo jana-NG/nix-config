@@ -10,7 +10,14 @@
     package = pkgs-stable.homepage-dashboard;
     allowedHosts = "tcenter.fritz.box:8080";
     # https://gethomepage.dev/configs/settings/
-    settings = { };
+    settings = {
+      title = "tcenter home";
+      background = {
+        image = "./homepage/background.png";
+      };
+      cardBlur = "xs";
+      color = "violet";
+    };
 
     # https://gethomepage.dev/configs/bookmarks/
     bookmarks = [ ];
