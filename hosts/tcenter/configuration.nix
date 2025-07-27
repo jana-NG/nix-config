@@ -27,7 +27,10 @@
       "docker"
       "tcenterdrive"
     ];
-    packages = with pkgs-stable; [ git ];
+    packages = with pkgs-stable; [
+      git
+      micro
+    ];
   };
 
   services.smartd = {

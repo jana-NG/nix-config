@@ -1,22 +1,32 @@
 { pkgs-stable, ... }:
+let
+  background_srs = "/etc/nixos/hosts/tcenter/homepage/background.jpg";
+  package = pkgs-stable.homepage-dashboard.overrideAttrs (oldAttrs: {
+    postInstall = ''
+      mkdir -p $out/share/homepage/public/images
+      ln -s ${background_srs} $out/share/homepage/public/images/background.jpg
+    '';
+  });
+in
 {
   services.glances = {
     enable = true;
     openFirewall = true;
   };
+
   services.homepage-dashboard = {
     enable = true;
     listenPort = 8080;
-    package = pkgs-stable.homepage-dashboard;
+    package = package;
     allowedHosts = "tcenter.fritz.box:8080";
     # https://gethomepage.dev/configs/settings/
     settings = {
-      title = "tcenter home";
+      title = "the tcenter";
       background = {
-        image = "./homepage/background.png";
+        image = "/images/background.jpg";
+        opacity = "50";
       };
-      cardBlur = "xs";
-      color = "violet";
+      cardBlur = "2xl";
     };
 
     # https://gethomepage.dev/configs/bookmarks/
@@ -49,6 +59,21 @@
             };
           }
         ];
+      }
+    ];
+    widgets = [
+      {
+        resources = {
+          cpu = true;
+          disk = "/";
+          memory = true;
+        };
+      }
+      {
+        search = {
+          provider = "duckduckgo";
+          target = "_blank";
+        };
       }
     ];
   };
