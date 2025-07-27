@@ -1,10 +1,10 @@
 { pkgs-stable, ... }:
 let
-  background_srs = "/etc/nixos/hosts/tcenter/homepage/background.jpg";
+  background_src = "/etc/nixos/hosts/tcenter/homepage/background.jpg";
   package = pkgs-stable.homepage-dashboard.overrideAttrs (oldAttrs: {
     postInstall = ''
       mkdir -p $out/share/homepage/public/images
-      ln -s ${background_srs} $out/share/homepage/public/images/background.jpg
+      ln -s ${background_src} $out/share/homepage/public/images/background.jpg
     '';
   });
 in
