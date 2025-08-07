@@ -1,5 +1,5 @@
 # this file contains misc service configuration
-{ lib, pkgs, ... }:
+{ ... }:
 {
 
   # Enable flatpaks
@@ -10,5 +10,6 @@
   services.smartd = {
     enable = true;
   };
+  services.dbus.enable = true;
 
 }

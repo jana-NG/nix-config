@@ -8,11 +8,26 @@
   ...
 }:
 {
+  imports = [
+    ./sddm.nix
+  ];
   #enable niri
   programs.niri.enable = true;
-  security.polkit.enable = true; # polkit
-  services.gnome.gnome-keyring.enable = true; # secret service
-  security.pam.services.swaylock = { };
+  security = {
+    polkit.enable = true;
+    pam.services = {
+      login.kwallet = {
+        enable = true;
+        package = pkgs.kdePackages.kwallet-pam;
+      };
+      sddm = {
+        kwallet = {
+          enable = true;
+          package = pkgs.kdePackages.kwallet-pam;
+        };
+      };
+    };
+  };
   hardware.i2c.enable = true;
   environment.systemPackages = with pkgs; [
     xwayland-satellite
@@ -24,12 +39,29 @@
     ddcutil
     libsForQt5.qt5ct
     kdePackages.qt6ct
+    kdePackages.kwallet
+    kdePackages.kwallet-pam
+    kdePackages.kwalletmanager
+    kdePackages.polkit-kde-agent-1
+  ];
+  services.dbus.packages = with pkgs; [
+    kdePackages.kwallet
   ];
   xdg.portal = {
     enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-gnome
+    extraPortals = with pkgs; [
+      kdePackages.xdg-desktop-portal-kde
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
     ];
+    config = {
+      common = {
+        default = [
+          "gtk"
+        ];
+        "org.freedesktop.impl.portal.Secret" = "kwallet";
+        "org.freedesktop.impl.portal.ScreenCast" = "gnome";
+      };
+    };
   };
 }

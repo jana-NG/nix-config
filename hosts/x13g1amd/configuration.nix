@@ -80,6 +80,9 @@
     #packages = with pkgs; [
     #];
   };
+  services.flatpak.packages = [
+    "app.zen_browser.zen"
+  ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

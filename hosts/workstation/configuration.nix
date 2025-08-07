@@ -9,15 +9,12 @@
     ../../packages/home.nix
     ../../system/boot.nix
     ../../system/services.nix
-    ../../environment/plasma.nix
     ../../environment/niri.nix
   ];
 
   #boot.kernelParams = [
   #];
   networking.hostName = "nikkiworkstation"; # Define your hostname.
-
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Power Management
   powerManagement.enable = true;
@@ -39,14 +36,19 @@
       "wheel"
     ];
     shell = pkgs.zsh;
-    #packages = with pkgs; [
-    #];
+    packages = with pkgs; [
+      citrix_workspace
+      element-desktop
+      fluffychat
+    ];
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
     "olm-3.2.16"
+    "libxml2-2.13.8"
+    "libsoup-2.74.3"
   ];
 
   # This value determines the NixOS release from which the default

@@ -3,6 +3,12 @@
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 input {
     // Libinput settings.
+    keyboard {
+        xkb {
+            layout "us"
+            variant "de_se_fi"
+        }
+    }
     touchpad {
         tap
         accel-profile "flat"
@@ -19,7 +25,6 @@ input {
         accel-speed 0.8
         accel-profile "flat"
     }
-
     // Mouse warps to the center of newly focused windows.
     warp-mouse-to-focus
 
@@ -215,11 +220,19 @@ layout {
 // See the binds section below for more spawn examples.
 
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+spawn-at-startup "xwayland-satellite" ":10"
+spawn-at-startup "sway-audio-idle-inhibit"
+spawn-at-startup "@kwalletPam@/libexec/pam_kwallet_init"
+spawn-at-startup "kwalletd6"
+spawn-at-startup "@polkit-kde-agent@/libexec/polkit-kde-authentication-agent-1"
 spawn-at-startup "qs" "-c" "DankMaterialShell"
-spawn-at-startup "xwayland-satellite" ":0"
+spawn-at-startup "flatpak" "run" "com.discordapp.Discord"
+spawn-at-startup "firefox"
+spawn-at-startup "signal-desktop" "--password-store=kwallet6"
+spawn-at-startup "steam"
 
 environment {
-    DISPLAY ":0"
+    DISPLAY ":10"
 }
 
 hotkey-overlay {
@@ -291,9 +304,13 @@ window-rule {
 
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
-/-window-rule {
+window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
+}
+window-rule {
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-right"
 }
 
 binds {
@@ -312,20 +329,20 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
+    Mod+T hotkey-overlay-title="Open a Terminal: Konsole" { spawn "konsole"; }
     Mod+Space hotkey-overlay-title="Application Launcher" {
         spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "spotlight" "toggle";
     }
     Mod+V hotkey-overlay-title="Clipboard Manager" {
         spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "clipboard" "toggle";
     }
-    Mod+M hotkey-overlay-title="Task Manager" {
-        spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "processlist" "toggle";
-    }
-    Mod+Comma hotkey-overlay-title="Settings" {
-        spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "settings" "toggle";
-    }
-    Super+Alt+L hotkey-overlay-title="Lock Screen" {
+    // Mod+M hotkey-overlay-title="Task Manager" {
+    //     spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "processlist" "toggle";
+    // }
+    // Mod+Comma hotkey-overlay-title="Settings" {
+    //     spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "settings" "toggle";
+    // }
+    Super+L hotkey-overlay-title="Lock Screen" {
         spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "lock" "lock";
     }
     XF86AudioRaiseVolume allow-when-locked=true {
@@ -342,8 +359,8 @@ binds {
     }
 
     // Example brightness key mappings for brightnessctl.
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    //XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    //XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,

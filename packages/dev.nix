@@ -17,4 +17,5 @@
         arduino-ide
         rpi-imager
       ]);
+  # services.flatpak.packages = [ ];
 }

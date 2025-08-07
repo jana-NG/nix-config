@@ -15,6 +15,10 @@
   };
 
   inputs = {
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     catppuccin.url = "github:catppuccin/nix";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
@@ -82,7 +86,6 @@
           nur.modules.nixos.default
           nix-flatpak.nixosModules.nix-flatpak
           ./hosts/x13g1amd/configuration.nix
-          ./flatpak.nix
           nixos-cosmic.nixosModules.default
         ];
       };
@@ -119,7 +122,6 @@
           nur.modules.nixos.default
           nix-flatpak.nixosModules.nix-flatpak
           ./hosts/a485/configuration.nix
-          ./flatpak.nix
           nixos-cosmic.nixosModules.default
         ];
       };
@@ -156,7 +158,6 @@
           nur.modules.nixos.default
           nix-flatpak.nixosModules.nix-flatpak
           ./hosts/minibook/configuration.nix
-          ./flatpak.nix
           nixos-cosmic.nixosModules.default
         ];
       };
@@ -194,7 +195,6 @@
           nur.modules.nixos.default
           nix-flatpak.nixosModules.nix-flatpak
           ./hosts/workstation/configuration.nix
-          ./flatpak.nix
           nixos-cosmic.nixosModules.default
         ];
       };
