@@ -22,24 +22,14 @@
   powerManagement.enable = true;
   services.power-profiles-daemon.enable = false;
   powerManagement.cpuFreqGovernor = "schedutil";
-  services.tlp = {
+  services.auto-cpufreq = {
     enable = true;
     settings = {
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-
-      CPU_MIN_PERF_ON_AC = 0;
-      CPU_MAX_PERF_ON_AC = 100;
-      CPU_MIN_PERF_ON_BAT = 0;
-      CPU_MAX_PERF_ON_BAT = 20;
-
-      #Optional helps save long term battery health
-      START_CHARGE_THRESH_BAT0 = 84; # 84 and below it starts to charge
-      STOP_CHARGE_THRESH_BAT0 = 90; # 90 and above it stops charging
-
+      battery = {
+        enable_thresholds = true;
+        start_threshold = 80;
+        stop_threshold = 90;
+      };
     };
   };
 
@@ -66,6 +56,7 @@
   environment.systemPackages = with pkgs; [
     ryzenadj
     powertop
+    auto-cpufreq
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
