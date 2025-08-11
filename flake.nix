@@ -78,7 +78,7 @@
             home-manager.users.nikki = {
               imports = [
                 ./home-manager/home.nix
-                catppuccin.homeManagerModules.catppuccin
+                catppuccin.homeModules.catppuccin
               ];
             };
             # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
@@ -113,7 +113,7 @@
             home-manager.users.nikki = {
               imports = [
                 ./home-manager/home.nix
-                catppuccin.homeManagerModules.catppuccin
+                catppuccin.homeModules.catppuccin
               ];
             };
 
