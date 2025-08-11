@@ -1,5 +1,5 @@
 # this file contains boot configuration
-{ lib, pkgs, ... }:
+{ ... }:
 {
   # Bootloader.
   boot.kernelParams = [

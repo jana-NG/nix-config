@@ -36,7 +36,7 @@ input {
 // You can configure outputs by their name, which you can find
 // by running `niri msg outputs` while inside a niri instance.
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
-output "DP-2" {
+output "Microstep MAG271QX OLED Unknown" {
     // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
     mode "2560x1440@360"
@@ -44,14 +44,18 @@ output "DP-2" {
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
     scale 1.25
 
+    variable-refresh-rate on-demand=true
+
+    focus-at-startup
+
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
     transform "normal"
 
     position x=2048 y=0
 }
 
-output "DP-3" {
-    mode "2560x1440@144"
+output "Microstep Optix MAG27CQ 0000000000001" {
+    mode "2560x1440@120"
 
     scale 1.25
 
@@ -223,7 +227,6 @@ spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 spawn-at-startup "xwayland-satellite" ":10"
 spawn-at-startup "sway-audio-idle-inhibit"
 spawn-at-startup "@kwalletPam@/libexec/pam_kwallet_init"
-spawn-at-startup "kwalletd6"
 spawn-at-startup "@polkit-kde-agent@/libexec/polkit-kde-authentication-agent-1"
 spawn-at-startup "qs" "-c" "DankMaterialShell"
 spawn-at-startup "flatpak" "run" "com.discordapp.Discord"
@@ -267,14 +270,35 @@ animations {
 }
 
 // Window rules let you adjust behavior for individual windows.
-// Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
 
-// Work around WezTerm's initial configure bug
-// by setting an empty default-column-width.
+workspace "chat" {
+    open-on-output "DP-3"
+}
+workspace "main" {
+    open-on-output "DP-2"
+}
+workspace "gaming" {
+    open-on-output "DP-2"
+}
 window-rule {
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
+    match at-startup=true app-id=r#"firefox$"#
+    open-maximized true
+    open-on-workspace "main"
+}
+window-rule {
+    match at-startup=true title="Discord"
+    open-maximized true
+    open-on-workspace "chat"
+}
+window-rule {
+    match at-startup=true title="Signal"
+    open-on-workspace "chat"
+}
+window-rule {
+    match at-startup=true app-id=r#"steam$"#
+    open-maximized true
+    open-on-workspace "gaming"
 }
 window-rule {
     match title="^$"
@@ -311,6 +335,7 @@ window-rule {
 window-rule {
     match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
     default-floating-position x=10 y=10 relative-to="bottom-right"
+    open-focused false
 }
 
 binds {

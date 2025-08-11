@@ -23,6 +23,7 @@
   # Firmware updates
   hardware.enableRedistributableFirmware = true;
   services.fwupd.enable = true;
+  programs.firejail.enable = true;
 
   #environment.systemPackages = with pkgs; [
   #];

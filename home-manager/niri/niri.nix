@@ -48,56 +48,6 @@
       };
     };
 
-  /*
-    services.swayidle =
-    let
-      # Lock command
-      lock = "qs -c DankMaterialShell ipc call lock lock";
-      # Niri
-      display = status: "${pkgs.niri}/bin/niri msg action power-${status}-monitors";
-    in
-    {
-      enable = true;
-      timeouts = [
-        {
-          timeout = 300;
-          command = display "off";
-          resumeCommand = display "on";
-        }
-        {
-          timeout = 600; # in seconds
-          command = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 seconds' -t 5000";
-        }
-        {
-          timeout = 605;
-          command = lock;
-        }
-        {
-          timeout = 3600;
-          command = "${pkgs.systemd}/bin/systemctl suspend";
-        }
-      ];
-      events = [
-        {
-          event = "before-sleep";
-          # adding duplicated entries for the same event may not work
-          command = (display "off") + "; " + lock;
-        }
-        {
-          event = "after-resume";
-          command = display "on";
-        }
-        {
-          event = "lock";
-          command = (display "off") + "; " + lock;
-        }
-        {
-          event = "unlock";
-          command = display "on";
-        }
-      ];
-    };
-  */
   home.packages = with pkgs; [
     sway-audio-idle-inhibit
     pavucontrol

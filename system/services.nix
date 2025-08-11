@@ -10,6 +10,9 @@
   services.smartd = {
     enable = true;
   };
-  services.dbus.enable = true;
+  services.dbus = {
+    enable = true;
+    implementation = "broker";
+  };
 
 }
