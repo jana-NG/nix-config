@@ -20,5 +20,9 @@
   services.displayManager.sddm = {
     package = lib.mkDefault pkgs.kdePackages.sddm;
     enable = true;
+    wayland = lib.mkDefault {
+      enable = true;
+      compositor = "kwin";
+    };
   };
 }

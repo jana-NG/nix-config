@@ -7,14 +7,11 @@
     ".config/niri/config.kdl" = {
       enable = true;
       source = pkgs.replaceVars ./config.kdl {
-        kwalletPam = pkgs.kdePackages.kwallet-pam;
-        polkit-kde-agent = pkgs.kdePackages.polkit-kde-agent-1;
+        # kwalletPam = pkgs.kdePackages.kwallet-pam;
+        # polkit-kde-agent = pkgs.kdePackages.polkit-kde-agent-1;
         DEFAULT_AUDIO_SINK = null;
       };
     };
-  };
-  home.sessionVariables = {
-    DISPLAY = ":O";
   };
   services.hypridle =
     let
@@ -53,5 +50,6 @@
     pavucontrol
     kitty
     libnotify
+    gcr
   ];
 }

@@ -15,14 +15,14 @@
   };
 
   inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    catppuccin.url = "github:catppuccin/nix";
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    catppuccin.url = "github:catppuccin/nix";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -185,8 +185,6 @@
                 catppuccin.homeModules.catppuccin
               ];
             };
-
-            # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
           }
           nur.modules.nixos.default
           nix-flatpak.nixosModules.nix-flatpak

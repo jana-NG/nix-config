@@ -226,12 +226,11 @@ layout {
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 spawn-at-startup "xwayland-satellite" ":10"
 spawn-at-startup "sway-audio-idle-inhibit"
-spawn-at-startup "@kwalletPam@/libexec/pam_kwallet_init"
-spawn-at-startup "@polkit-kde-agent@/libexec/polkit-kde-authentication-agent-1"
 spawn-at-startup "qs" "-c" "DankMaterialShell"
 spawn-at-startup "flatpak" "run" "com.discordapp.Discord"
+spawn-at-startup "bash" "-c" "systemctl --user start hyprpolkitagent graphical-session.target &"
 spawn-at-startup "firefox"
-spawn-at-startup "signal-desktop" "--password-store=kwallet6"
+spawn-at-startup "signal-desktop --password-store=gnome-libsecret"
 spawn-at-startup "steam"
 
 environment {
@@ -253,7 +252,7 @@ hotkey-overlay {
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
-screenshot-path "~/Pictures/Screenshots/Screenshot_%Y-%m-%d_%H-%M-%S.png"
+// screenshot-path "~/Pictures/Screenshots/Screenshot_%Y-%m-%d_%H-%M-%S.png"
 
 // You can also set this to null to disable saving screenshots to disk.
 // screenshot-path null
