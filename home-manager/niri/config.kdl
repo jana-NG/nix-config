@@ -33,6 +33,10 @@ input {
     focus-follows-mouse max-scroll-amount="0%"
 }
 
+cursor {
+    hide-after-inactive-ms 30000
+}
+
 // You can configure outputs by their name, which you can find
 // by running `niri msg outputs` while inside a niri instance.
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
@@ -230,8 +234,8 @@ spawn-at-startup "qs" "-c" "DankMaterialShell"
 spawn-at-startup "flatpak" "run" "com.discordapp.Discord"
 spawn-at-startup "bash" "-c" "systemctl --user start hyprpolkitagent graphical-session.target &"
 spawn-at-startup "firefox"
-spawn-at-startup "signal-desktop --password-store=gnome-libsecret"
 spawn-at-startup "steam"
+spawn-at-startup "signal-desktop" "--password-store=gnome-libsecret"
 
 environment {
     DISPLAY ":10"
@@ -281,6 +285,10 @@ workspace "gaming" {
     open-on-output "DP-2"
 }
 window-rule {
+    match at-startup=true
+    open-maximized false
+}
+window-rule {
     match at-startup=true app-id=r#"firefox$"#
     open-maximized true
     open-on-workspace "main"
@@ -295,6 +303,10 @@ window-rule {
     open-on-workspace "chat"
 }
 window-rule {
+    match at-startup=true title="FluffyChat"
+    open-on-workspace "chat"
+}
+window-rule {
     match at-startup=true app-id=r#"steam$"#
     open-maximized true
     open-on-workspace "gaming"
@@ -304,17 +316,35 @@ window-rule {
     open-floating true
 }
 
+// Indicate screencasted windows with red colors.
+window-rule {
+    match is-window-cast-target=true
+
+    focus-ring {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+
+    border {
+        inactive-color "#7d0d2d"
+    }
+
+    shadow {
+        color "#7d0d2d70"
+    }
+
+    tab-indicator {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+}
+
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
-    // This app-id regular expression will work for both:
-    // - host Firefox (app-id is "firefox")
-    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
 
-// Example: block out two password managers from screen capture.
-// (This example rule is commented out with a "/-" in front.)
 /-window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
@@ -338,18 +368,7 @@ window-rule {
 }
 
 binds {
-    // Keys consist of modifiers separated by + signs, followed by an XKB key name
-    // in the end. To find an XKB name for a particular key, you may use a program
-    // like wev.
-    //
-    // "Mod" is a special modifier equal to Super when running on a TTY, and to Alt
-    // when running as a winit window.
-    //
-    // Most actions that you can bind here can also be invoked programmatically with
-    // `niri msg action do-something`.
 
-    // Mod-Shift-/, which is usually the same as Mod-?,
-    // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
@@ -360,12 +379,6 @@ binds {
     Mod+V hotkey-overlay-title="Clipboard Manager" {
         spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "clipboard" "toggle";
     }
-    // Mod+M hotkey-overlay-title="Task Manager" {
-    //     spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "processlist" "toggle";
-    // }
-    // Mod+Comma hotkey-overlay-title="Settings" {
-    //     spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "settings" "toggle";
-    // }
     Super+L hotkey-overlay-title="Lock Screen" {
         spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "lock" "lock";
     }
@@ -381,10 +394,13 @@ binds {
     XF86AudioMicMute allow-when-locked=true {
         spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "micmute";
     }
+    XF86AudioPlay allow-when-locked=true {
+        spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "mpris" "playPause"
+    }
 
     // Example brightness key mappings for brightnessctl.
-    //XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    //XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
@@ -589,9 +605,9 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
-    Mod+Shift+S { screenshot; }
+    Mod+Shift+S { screenshot show-pointer=false; }
     Mod+Control+S { screenshot-screen; }
-    Mod+Alt+S { screenshot-window; }
+    Mod+Alt+S { screenshot-window;}
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here

@@ -13,6 +13,7 @@
       };
     };
   };
+
   services.hypridle =
     let
       # Lock command
@@ -48,7 +49,6 @@
   home.packages = with pkgs; [
     sway-audio-idle-inhibit
     pavucontrol
-    kitty
     libnotify
     gcr
   ];
