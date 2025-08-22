@@ -7,11 +7,10 @@ create a configuration that aims to reduce the work required to maintain multipl
 - home-manager: Configuration for the Home-Manager module
 - hosts: Configuration specific to my various systems
 - packages: Commonly used software
-- system: Commonly used system services, boot and kernel configuration
 
 ## hosts
 - default
-  includes common config like timezone and enabling wifi + bluetooth
+  includes common config like timezone and enabling wifi + bluetooth, nix store settings
 
 - a485: personal laptop
     - model: thinkpad a485
@@ -41,8 +40,3 @@ create a configuration that aims to reduce the work required to maintain multipl
     - cpu: ryzen 5 4600
     - ram: 16 GB
     - display: 1920x1080@60
-
-## todo
-- secret management
-- configure x220t and add to config
-- fix home-assistant in tcenter (replace with docker container?)
