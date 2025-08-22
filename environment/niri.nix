@@ -10,6 +10,7 @@
 {
   imports = [
     ./sddm.nix
+    ../packages/wmapps.nix
   ];
   #enable niri
   programs.niri.enable = true;
@@ -27,6 +28,9 @@
     cliphist
     matugen
     wl-clipboard
+    brightnessctl
+    gammastep
+    glib
     ddcutil
     libsForQt5.qt5ct
     kdePackages.qt6ct
