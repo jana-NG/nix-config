@@ -286,7 +286,7 @@ workspace "gaming" {
 }
 window-rule {
     match at-startup=true
-    open-maximized false
+    open-focused false
 }
 window-rule {
     match at-startup=true app-id=r#"firefox$"#
