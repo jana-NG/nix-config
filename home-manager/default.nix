@@ -9,8 +9,6 @@
     ANI_CLI_PLAYER = "haruna";
   };
 
-  programs.zed-editor.enable = true;
-
   programs.btop.enable = true;
 
   programs.micro = {
@@ -28,6 +26,7 @@
 
   gtk = {
     enable = true;
+    font.name = "Ubuntu Nerd Font";
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = "1";
     };
