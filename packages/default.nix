@@ -36,6 +36,7 @@
     fira-code-symbols
     nerd-fonts.ubuntu
     nerd-fonts.symbols-only
+    corefonts
   ];
 
   # List packages installed in system profile. To search, run:
@@ -51,8 +52,7 @@
       xorg.xrdb
       ffmpeg-full
       krita
-      kdePackages.marknote
-      kdePackages.kweather
+      qownnotes
       kdePackages.kalk
       kdePackages.filelight
       kdePackages.krecorder
@@ -75,7 +75,6 @@
         drawio
       ]);
   services.flatpak.update.auto.enable = true;
-  #services.flatpak.uninstallUnmanaged = false;
 
   # Add here the flatpaks you want to install
   services.flatpak.packages = [
