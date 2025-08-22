@@ -6,19 +6,8 @@
 }:
 {
   # Install firefox.
-  security.sudo-rs.enable = true;
   programs.firefox.enable = true;
   programs.kdeconnect.enable = true;
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
-  programs.dconf.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 4;
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 4d";
-  };
-  nix.settings.auto-optimise-store = true;
 
   #Add Fonts
   fonts.fontDir.enable = true;
@@ -74,9 +63,10 @@
         xorg.xeyes
         drawio
       ]);
-  services.flatpak.update.auto.enable = true;
 
-  # Add here the flatpaks you want to install
+  # flatpak configuration
+  services.flatpak.enable = true;
+  services.flatpak.update.auto.enable = true;
   services.flatpak.packages = [
     "org.gnome.World.PikaBackup"
     "com.github.tchx84.Flatseal"
