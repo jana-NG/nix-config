@@ -12,7 +12,7 @@
     flavor = "mocha";
     accent = "mauve";
     font = "Blex Mono Nerd Font";
-    fontSize = "14";
+    fontSize = "12";
     userIcon = true;
     clockEnabled = true;
   };
