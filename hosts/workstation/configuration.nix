@@ -8,8 +8,6 @@
     ../../packages/dev.nix
     ../../packages/home.nix
     ../../packages/gaming.nix
-    ../../system/boot.nix
-    ../../system/services.nix
     ../../environment/niri.nix
   ];
 

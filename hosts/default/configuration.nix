@@ -1,13 +1,16 @@
 # this file contains universal hardware config
-{ lib, pkgs, ... }:
+{ pkgs, lib, ... }:
 {
+
+  imports = [
+    ./boot.nix
+  ];
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "de_DE.UTF-8";
     LC_IDENTIFICATION = "de_DE.UTF-8";
@@ -24,7 +27,7 @@
   networking = {
     networkmanager = {
       enable = true;
-      wifi.powersave = false;
+      wifi.powersave = lib.mkDefault false;
     };
   };
 
@@ -73,11 +76,36 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+  };
 
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
+  # replace sudo with sudo-rs
+  security.sudo-rs.enable = true;
+
+  # enable zsh for users
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+
+  programs.dconf.enable = true;
+
+  boot.loader.systemd-boot.configurationLimit = 4;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 4d";
+  };
+  nix.settings.auto-optimise-store = true;
+
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+
+  # SMART monitoring
+  services.smartd = {
+    enable = true;
+  };
+
+  # dbus
+  services.dbus = {
+    enable = true;
+    implementation = "broker";
   };
 }

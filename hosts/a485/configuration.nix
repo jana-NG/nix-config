@@ -7,8 +7,7 @@
     ../../packages/default.nix
     ../../packages/dev.nix
     ../../packages/home.nix
-    ../../system/boot.nix
-    ../../system/services.nix
+    ../../packages/gaming.nix
     ../../environment/plasma.nix
   ];
 
