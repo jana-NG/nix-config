@@ -1,5 +1,10 @@
 # this file contains config specific to my workstation
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  pkgs-stable,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -48,7 +53,7 @@
       "wheel"
     ];
     shell = pkgs.zsh;
-    packages = with pkgs; [
+    packages = with pkgs-stable; [
       citrix_workspace
     ];
   };

@@ -182,6 +182,7 @@
               imports = [
                 ./home-manager/home.nix
                 ./home-manager/niri/niri.nix
+                ./home-manager/sway/sway.nix
                 catppuccin.homeModules.catppuccin
               ];
             };
