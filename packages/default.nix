@@ -50,6 +50,7 @@
       kdePackages.neochat
       kdePackages.konsole
       kdePackages.dolphin
+      kdePackages.ark
       kdePackages.qtimageformats
       kdePackages.kde-cli-tools
     ])

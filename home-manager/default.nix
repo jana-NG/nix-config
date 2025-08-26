@@ -7,6 +7,7 @@
   home.sessionVariables = {
     EDITOR = "micro";
     ANI_CLI_PLAYER = "haruna";
+    TERMINAL = "konsole";
   };
 
   programs.btop.enable = true;
