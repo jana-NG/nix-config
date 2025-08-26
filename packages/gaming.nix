@@ -38,5 +38,7 @@
     ++
 
       (with pkgs-stable; [ ]);
-  # services.flatpak.packages = [ ];
+  services.flatpak.packages = [
+    "com.steamgriddb.steam-rom-manager"
+  ];
 }
