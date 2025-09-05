@@ -25,7 +25,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    xwayland-satellite
     inputs.quickshell.packages.${pkgs.system}.default
     cava
     cliphist

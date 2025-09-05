@@ -228,7 +228,6 @@ layout {
 // See the binds section below for more spawn examples.
 
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
-spawn-at-startup "xwayland-satellite" ":10"
 spawn-at-startup "sway-audio-idle-inhibit"
 spawn-at-startup "qs" "-c" "DankMaterialShell"
 spawn-at-startup "flatpak" "run" "com.discordapp.Discord"
@@ -236,10 +235,6 @@ spawn-at-startup "bash" "-c" "systemctl --user start hyprpolkitagent graphical-s
 spawn-at-startup "firefox"
 spawn-at-startup "steam"
 spawn-at-startup "signal-desktop" "--password-store=gnome-libsecret"
-
-environment {
-    DISPLAY ":10"
-}
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
