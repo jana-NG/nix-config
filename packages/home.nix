@@ -16,6 +16,7 @@
 
       (with pkgs-stable; [
         gparted
+        exfatprogs
       ]);
   services.flatpak.packages = [
     "com.github.iwalton3.jellyfin-media-player"
@@ -26,5 +27,6 @@
     "com.discordapp.Discord"
     "de.bund.ausweisapp.ausweisapp2"
     "com.usebottles.bottles"
+    "org.nickvision.money"
   ];
 }

@@ -9,13 +9,13 @@
       vscode-fhs
       openssl
       pkg-config
+      rpi-imager
     ])
 
     ++
 
       (with pkgs-stable; [
         arduino-ide
-        rpi-imager
       ]);
   # services.flatpak.packages = [ ];
 }

@@ -40,5 +40,6 @@
       (with pkgs-stable; [ ]);
   services.flatpak.packages = [
     "com.steamgriddb.steam-rom-manager"
+    "com.dec05eba.gpu_screen_recorder"
   ];
 }

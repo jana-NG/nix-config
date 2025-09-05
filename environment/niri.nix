@@ -20,6 +20,9 @@
   security.pam.services.greetd.enableGnomeKeyring = true;
   security.polkit.enable = true;
   hardware.i2c.enable = true;
+  services.logind.settings.Login = {
+    HandlePowerKey = "ignore";
+  };
 
   environment.systemPackages = with pkgs; [
     xwayland-satellite
