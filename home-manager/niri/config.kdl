@@ -228,7 +228,6 @@ layout {
 // See the binds section below for more spawn examples.
 
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
-spawn-at-startup "sway-audio-idle-inhibit"
 spawn-at-startup "qs" "-c" "DankMaterialShell"
 spawn-at-startup "flatpak" "run" "com.discordapp.Discord"
 spawn-at-startup "bash" "-c" "systemctl --user start hyprpolkitagent graphical-session.target &"
@@ -246,7 +245,10 @@ hotkey-overlay {
 // Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
 // This option will also fix border/focus ring drawing behind some semitransparent windows.
 // After enabling or disabling this, you need to restart the apps for this to take effect.
-// prefer-no-csd
+prefer-no-csd
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+}
 
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.

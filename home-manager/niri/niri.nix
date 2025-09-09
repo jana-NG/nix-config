@@ -47,7 +47,6 @@
     };
 
   home.packages = with pkgs; [
-    sway-audio-idle-inhibit
     pavucontrol
     libnotify
     gcr
