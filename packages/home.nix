@@ -10,6 +10,7 @@
       yt-dlp
       wineWowPackages.waylandFull
       pinta
+      qdiskinfo
     ])
 
     ++
