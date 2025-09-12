@@ -15,7 +15,7 @@
     ../../packages/gaming.nix
     ../../environment/niri.nix
   ];
-
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.extraModulePackages = with config.boot.kernelPackages; [ ddcci-driver ];
   boot.kernelModules = [ "ddcci-backlight" ];
   services.udev.extraRules =
