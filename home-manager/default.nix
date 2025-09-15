@@ -24,6 +24,12 @@
   ];
 
   programs.fastfetch.enable = true;
+  home.file = {
+    ".config/fastfetch/config.jsonc" = {
+      enable = true;
+      source = ./fastfetch/config.jsonc;
+    };
+  };
 
   gtk = {
     enable = true;
