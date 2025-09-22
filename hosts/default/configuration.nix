@@ -96,7 +96,14 @@
   nix.settings.auto-optimise-store = true;
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      cups-filters
+      cups-browsed
+      brlaser
+    ];
+  };
 
   # SMART monitoring
   services.smartd = {
