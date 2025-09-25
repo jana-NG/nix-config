@@ -53,9 +53,13 @@
       kdePackages.neochat
       kdePackages.konsole
       kdePackages.dolphin
+      kdePackages.qtsvg
+      kdePackages.kio-fuse # to mount remote filesystems via FUSE
+      kdePackages.kio-extras # extra protocols support (sftp, fish and more)
       kdePackages.ark
       kdePackages.qtimageformats
       kdePackages.kde-cli-tools
+      calibre
     ])
 
     ++
