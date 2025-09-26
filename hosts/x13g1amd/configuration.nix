@@ -8,12 +8,11 @@
     ../../packages/dev.nix
     ../../packages/home.nix
     ../../packages/gaming.nix
-    ../../environment/plasma.nix
+    ../../environment/niri.nix
   ];
 
   boot.kernelParams = [
     "acpi_backlight=native"
-    "mem_sleep_default=deep"
   ];
   networking.hostName = "nikkix13g1"; # Define your hostname.
 
@@ -71,7 +70,7 @@
     #];
   };
   services.flatpak.packages = [
-    "app.zen_browser.zen"
+
   ];
 
   # Allow unfree packages

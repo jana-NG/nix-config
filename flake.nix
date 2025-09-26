@@ -74,6 +74,7 @@
             home-manager.users.nikki = {
               imports = [
                 ./home-manager/home.nix
+                ./home-manager/niri/niri.nix
                 catppuccin.homeModules.catppuccin
               ];
             };
