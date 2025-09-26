@@ -2,6 +2,7 @@
 {
   pkgs,
   inputs,
+  lib,
   /**
     pkgs-stable,
   */
@@ -22,7 +23,7 @@
   services.upower.enable = true;
   hardware.i2c.enable = true;
   services.logind.settings.Login = {
-    HandlePowerKey = "ignore";
+    HandlePowerKey = lib.mkDefault "ignore";
   };
 
   environment.systemPackages = with pkgs; [

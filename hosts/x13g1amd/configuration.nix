@@ -15,6 +15,14 @@
   boot.kernelParams = [
     "acpi_backlight=native"
   ];
+  services.logind.settings.Login = {
+    HandlePowerKey = "suspend-then-hibernate";
+    HandleLidSwitch = "suspend-then-hibernate";
+  };
+  systemd.sleep.extraConfig = ''
+    HibernateMode=shutdown
+    HibernateDelaySec=60m
+  '';
   networking.hostName = "nikkix13g1"; # Define your hostname.
 
   # Power Management
@@ -50,7 +58,7 @@
   services.fwupd.enable = true;
 
   #Fingerprint sensor
-  services.fprintd.enable = true;
+  # services.fprintd.enable = true;
 
   environment.systemPackages = with pkgs; [
     ryzenadj
