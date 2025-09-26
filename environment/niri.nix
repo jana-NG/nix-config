@@ -19,6 +19,7 @@
   programs.seahorse.enable = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
   security.polkit.enable = true;
+  services.upower.enable = true;
   hardware.i2c.enable = true;
   services.logind.settings.Login = {
     HandlePowerKey = "ignore";
