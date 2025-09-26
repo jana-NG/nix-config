@@ -11,6 +11,7 @@
     ../../environment/niri.nix
   ];
 
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.kernelParams = [
     "acpi_backlight=native"
   ];
