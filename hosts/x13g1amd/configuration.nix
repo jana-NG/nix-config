@@ -16,12 +16,13 @@
     "acpi_backlight=native"
   ];
   services.logind.settings.Login = {
-    HandlePowerKey = "suspend-then-hibernate";
-    HandleLidSwitch = "suspend-then-hibernate";
+    HandlePowerKey = "suspend";
+    HandleLidSwitch = "suspend";
   };
   systemd.sleep.extraConfig = ''
     HibernateMode=shutdown
-    HibernateDelaySec=60m
+    SuspendState=mem
+    MemorySleepMode=s2idle
   '';
   networking.hostName = "nikkix13g1"; # Define your hostname.
 
@@ -33,6 +34,8 @@
     enable = true;
     settings = {
       battery = {
+        turbo = "never";
+        platform_profile = "low-power";
         enable_thresholds = true;
         start_threshold = 80;
         stop_threshold = 90;
