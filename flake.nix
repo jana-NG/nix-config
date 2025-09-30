@@ -15,6 +15,10 @@
   };
 
   inputs = {
+    dankMaterialShell = {
+      url = "github:AvengeMedia/DankMaterialShell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
@@ -76,6 +80,7 @@
                 ./home-manager/home.nix
                 ./home-manager/niri/niri.nix
                 catppuccin.homeModules.catppuccin
+                inputs.dankMaterialShell.homeModules.dankMaterialShell.default
               ];
             };
             # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix

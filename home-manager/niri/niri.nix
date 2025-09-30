@@ -3,6 +3,9 @@
   ...
 }:
 {
+  programs.dankMaterialShell = {
+    enable = true;
+  };
   home.file = {
     ".config/niri/config.kdl" = {
       enable = true;
