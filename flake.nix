@@ -4,12 +4,10 @@
   nixConfig = {
     substituters = [
       "https://cache.nixos.org/"
-      # "https://cosmic.cachix.org/"
       "https://nix-community.cachix.org"
     ];
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-      # "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
   };
@@ -25,10 +23,6 @@
     catppuccin.url = "github:catppuccin/nix";
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur = {
@@ -48,7 +42,6 @@
       nixpkgs-stable,
       nix-flatpak,
       nur,
-      nixos-cosmic,
       home-manager,
       catppuccin,
       ...
@@ -88,7 +81,6 @@
           nur.modules.nixos.default
           nix-flatpak.nixosModules.nix-flatpak
           ./hosts/x13g1amd/configuration.nix
-          nixos-cosmic.nixosModules.default
         ];
       };
 
@@ -124,7 +116,6 @@
           nur.modules.nixos.default
           nix-flatpak.nixosModules.nix-flatpak
           ./hosts/a485/configuration.nix
-          nixos-cosmic.nixosModules.default
         ];
       };
 
@@ -160,7 +151,6 @@
           nur.modules.nixos.default
           nix-flatpak.nixosModules.nix-flatpak
           ./hosts/minibook/configuration.nix
-          nixos-cosmic.nixosModules.default
         ];
       };
 
@@ -196,7 +186,6 @@
           nur.modules.nixos.default
           nix-flatpak.nixosModules.nix-flatpak
           ./hosts/workstation/configuration.nix
-          nixos-cosmic.nixosModules.default
         ];
       };
 
