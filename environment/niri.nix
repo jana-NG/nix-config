@@ -10,20 +10,33 @@
 }:
 {
   imports = [
-    ./sddm.nix
     ../packages/wmapps.nix
   ];
   #enable niri
   programs.niri.enable = true;
+  #user picture support stuff
   services.accounts-daemon.enable = true;
+  #encryption and security stuff
   services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
   security.polkit.enable = true;
+  #required to read battery
   services.upower.enable = true;
+  #required for some monitors
   hardware.i2c.enable = true;
+  #i do not like power button immediately shutting down my system
   services.logind.settings.Login = {
     HandlePowerKey = lib.mkDefault "ignore";
+  };
+  #enable dms greetd implementation
+  programs.dankMaterialShell = {
+    greeter = {
+      enable = true;
+      compositor.name = "niri";
+      configFiles = [ "/home/nikki/.config/DankMaterialShell/settings.json" ];
+      configHome = "/home/nikki";
+    };
   };
 
   environment.systemPackages = with pkgs; [
