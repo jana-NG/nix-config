@@ -20,7 +20,7 @@
   services.hypridle =
     let
       # Lock command
-      lock = "qs -c DankMaterialShell ipc call lock lock";
+      lock = "qs -c dms ipc call lock lock";
       # Niri
       display = status: "${pkgs.niri}/bin/niri msg action power-${status}-monitors";
     in
