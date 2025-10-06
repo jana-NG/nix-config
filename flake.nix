@@ -13,10 +13,6 @@
   };
 
   inputs = {
-    dankMaterialShell = {
-      url = "github:AvengeMedia/DankMaterialShell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
@@ -31,6 +27,14 @@
     };
     home-manager = {
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dankMaterialShell = {
+      url = "github:AvengeMedia/DankMaterialShell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-chuwi-minibook-x = {
+      url = "github:knoopx/nix-chuwi-minibook-x";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -72,13 +76,13 @@
               imports = [
                 ./home-manager/home.nix
                 ./home-manager/niri/niri.nix
+                inputs.dankMaterialShell.nixosModules.greeter
                 catppuccin.homeModules.catppuccin
                 inputs.dankMaterialShell.homeModules.dankMaterialShell.default
               ];
             };
             # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
           }
-          nur.modules.nixos.default
           nix-flatpak.nixosModules.nix-flatpak
           ./hosts/x13g1amd/configuration.nix
         ];
@@ -136,12 +140,17 @@
           }
           catppuccin.nixosModules.catppuccin
           home-manager.nixosModules.home-manager
+          inputs.nix-chuwi-minibook-x.nixosModules.default
+          inputs.dankMaterialShell.nixosModules.greeter
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.nikki = {
               imports = [
                 ./home-manager/home.nix
+                ./home-manager/niri/niri.nix
+                ./home-manager/sway/sway.nix
+                inputs.dankMaterialShell.homeModules.dankMaterialShell.default
                 catppuccin.homeModules.catppuccin
               ];
             };
@@ -179,11 +188,12 @@
                 ./home-manager/home.nix
                 ./home-manager/niri/niri.nix
                 ./home-manager/sway/sway.nix
+                inputs.dankMaterialShell.homeModules.dankMaterialShell.default
                 catppuccin.homeModules.catppuccin
               ];
             };
           }
-          nur.modules.nixos.default
+          inputs.dankMaterialShell.nixosModules.greeter
           nix-flatpak.nixosModules.nix-flatpak
           ./hosts/workstation/configuration.nix
         ];
