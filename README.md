@@ -1,42 +1,21 @@
 # my personal nix configuration
-## intended goals
-create a configuration that aims to reduce the work required to maintain multiple hosts at once. settings up new devices should be as easy as possible 
+this is my nixos setup designed to provide unified styling and a simple, personalized workflow. i primarily use the niri compositor, but this repository also includes configuration files for kde plasma incase i want to use a traditional desktop environment.
 
-## structure
-- environment: Includes Desktop Environments, Window Managers and Display Managers.
-- home-manager: Configuration for the Home-Manager module
-- hosts: Configuration specific to my various systems
-- packages: Commonly used software
+## my devices
+- workstation
+- - powerful custom-built computer and my main workstation
+- x13 gen 1 amd
+- - older but capable laptop which i use to code on the go
+- minibook x
+- - lightweight easy to carry modern netbook
 
-## hosts
-- default
-  includes common config like timezone and enabling wifi + bluetooth, nix store settings
+## file structure
+- environment/: contains desktop environments and window managers
+- home/: contains home-manager configuration
+- - home/hosts/: contains home-manager configuration specific to my devices
+- - home/modules/: contains different applications and their configurations to be included by ../hosts/
+- hosts/: contains configuration specific to my devices
+- modules/: contains different applications and their configurations to be included by ../hosts/
+- - modules/profiles/: contains groups of applications and their configurations to be included by ../../hosts/
 
-- a485: personal laptop
-    - model: thinkpad a485
-    - cpu: ryzen 3 2300U
-    - ram: 32 GB
-    - display: 1920x1080@60
 
-- minibook: personal laptop, quirks: kernel module for tablet mode
-    - device: chuwi minibook x n100
-    - cpu: intel n100
-    - ram: 12 GB
-    - display: 1920x1200@50
-    - quirks: kernel module for tablet mode
-
-- tcenter: home center, configuration is very divorced from the other devices
-    - device: thinkcentre m720s
-    - cpu: intel i5-8400
-    - ram: 16 GB
-
-- workstation: my tower at home
-    - cpu: ryzen 7 5800x3d
-    - gpu: radeon rx 6700xt
-    - ram: 32 GB
-    - display: 2560x1440@360 - 2560x1440@144
-
-- x13g1amd: personal laptop
-    - cpu: ryzen 5 4600
-    - ram: 16 GB
-    - display: 1920x1080@60
