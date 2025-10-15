@@ -2,35 +2,11 @@
   pkgs,
   ...
 }:
-
 {
-  home.sessionVariables = {
-    EDITOR = "micro";
-    ANI_CLI_PLAYER = "haruna";
-    TERMINAL = "konsole";
-  };
-
-  programs.btop.enable = true;
-
-  programs.micro = {
-    enable = true;
-    package = pkgs.micro-with-wl-clipboard;
-  };
-
   home.packages = with pkgs; [
-    kdePackages.qtstyleplugin-kvantum
     dconf-editor
     gnome-themes-extra
   ];
-
-  programs.fastfetch.enable = true;
-  home.file = {
-    ".config/fastfetch/config.jsonc" = {
-      enable = true;
-      source = ./fastfetch/config.jsonc;
-    };
-  };
-
   gtk = {
     enable = true;
     font.name = "Ubuntu Nerd Font";
@@ -60,17 +36,5 @@
         }
       );
     };
-  };
-
-  qt.enable = true;
-  qt.style.name = "kvantum";
-  qt.platformTheme.name = "kvantum";
-
-  catppuccin = {
-    accent = "mauve";
-    flavor = "mocha";
-    enable = true;
-    cursors.enable = true;
-    gtk.icon.enable = false;
   };
 }

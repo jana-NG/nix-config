@@ -1,9 +1,7 @@
 {
   ...
 }:
-
 {
-  # zsh config
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -20,6 +18,7 @@
       nixedit = "kate ~/.config/nixos";
     };
   };
+
   programs.starship = {
     enable = true;
     settings = {
@@ -36,22 +35,9 @@
       };
     };
   };
+
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
-  };
-  programs.yazi = {
-    enable = true;
-    enableZshIntegration = true;
-
-    settings = {
-      mgr = {
-        show_hidden = true;
-      };
-      preview = {
-        max_width = 1000;
-        max_height = 1000;
-      };
-    };
   };
 }

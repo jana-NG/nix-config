@@ -9,9 +9,6 @@
   ...
 }:
 {
-  imports = [
-    ../packages/wmapps.nix
-  ];
   #enable niri
   programs.niri.enable = true;
   #user picture support stuff

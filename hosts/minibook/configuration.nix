@@ -4,10 +4,11 @@
   imports = [
     ./hardware-configuration.nix
     ../default/configuration.nix
-    ../../packages/default.nix
-    ../../packages/dev.nix
-    ../../packages/home.nix
-    ../../environment/plasma.nix
+    ../../modules/profiles/default.nix
+    ../../modules/profiles/dev.nix
+    ../../modules/profiles/home.nix
+    ../../modules/profiles/gaming.nix
+    ../../environment/niri.nix
   ];
 
   boot.kernelParams = [

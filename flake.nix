@@ -44,178 +44,127 @@
       self,
       nixpkgs,
       nixpkgs-stable,
-      nix-flatpak,
-      nur,
-      home-manager,
-      catppuccin,
       ...
     }@inputs:
     {
+      nixosConfigurations = {
 
-      #  -- x13 gen 1 amd --
+        #  -- x13 gen 1 amd --
 
-      nixosConfigurations.nikkix13g1 = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          pkgs-stable = import nixpkgs-stable {
-            system = "x86_64-linux";
-            config.allowUnfree = true;
-          };
-        };
-        modules = [
-          {
-            nix.settings.trusted-users = [ "nikki" ];
-          }
-          catppuccin.nixosModules.catppuccin
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.nikki = {
-              imports = [
-                ./home-manager/home.nix
-                ./home-manager/niri/niri.nix
-                inputs.dankMaterialShell.nixosModules.greeter
-                catppuccin.homeModules.catppuccin
-                inputs.dankMaterialShell.homeModules.dankMaterialShell.default
-              ];
+        nikkix13g1 = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs;
+            pkgs-stable = import nixpkgs-stable {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
             };
-            # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
-          }
-          nix-flatpak.nixosModules.nix-flatpak
-          ./hosts/x13g1amd/configuration.nix
-        ];
-      };
-
-      #  -- a485 --
-
-      nixosConfigurations.nikkia485 = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          pkgs-stable = import nixpkgs-stable {
-            system = "x86_64-linux";
-            config.allowUnfree = true;
           };
+          modules = [
+            {
+              nix.settings.trusted-users = [ "nikki" ];
+            }
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.nikki = {
+                imports = [
+                  ./home/hosts/x13g1amd.nix
+                  inputs.dankMaterialShell.nixosModules.greeter
+                  inputs.catppuccin.homeModules.catppuccin
+                  inputs.dankMaterialShell.homeModules.dankMaterialShell.default
+                ];
+              };
+            }
+            inputs.catppuccin.nixosModules.catppuccin
+            inputs.home-manager.nixosModules.home-manager
+            inputs.nix-flatpak.nixosModules.nix-flatpak
+            ./hosts/x13g1amd/configuration.nix
+          ];
         };
-        modules = [
-          {
-            nix.settings.trusted-users = [ "nikki" ];
-          }
-          catppuccin.nixosModules.catppuccin
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.nikki = {
-              imports = [
-                ./home-manager/home.nix
-                catppuccin.homeModules.catppuccin
-              ];
+        #  -- minibook x --
+
+        nikkiminibook = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs;
+            pkgs-stable = import nixpkgs-stable {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
             };
-
-            # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
-          }
-          nur.modules.nixos.default
-          nix-flatpak.nixosModules.nix-flatpak
-          ./hosts/a485/configuration.nix
-        ];
-      };
-
-      #  -- minibook x --
-
-      nixosConfigurations.nikkiminibook = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          pkgs-stable = import nixpkgs-stable {
-            system = "x86_64-linux";
-            config.allowUnfree = true;
           };
+          modules = [
+            {
+              nix.settings.trusted-users = [ "nikki" ];
+            }
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.nikki = {
+                imports = [
+                  ./home/hosts/minibook.nix
+                  inputs.dankMaterialShell.homeModules.dankMaterialShell.default
+                  inputs.catppuccin.homeModules.catppuccin
+                ];
+              };
+            }
+            inputs.catppuccin.nixosModules.catppuccin
+            inputs.home-manager.nixosModules.home-manager
+            inputs.nix-chuwi-minibook-x.nixosModules.default
+            inputs.dankMaterialShell.nixosModules.greeter
+            inputs.nix-flatpak.nixosModules.nix-flatpak
+            ./hosts/minibook/configuration.nix
+          ];
         };
-        modules = [
-          {
-            nix.settings.trusted-users = [ "nikki" ];
-          }
-          catppuccin.nixosModules.catppuccin
-          home-manager.nixosModules.home-manager
-          inputs.nix-chuwi-minibook-x.nixosModules.default
-          inputs.dankMaterialShell.nixosModules.greeter
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.nikki = {
-              imports = [
-                ./home-manager/home.nix
-                ./home-manager/niri/niri.nix
-                ./home-manager/sway/sway.nix
-                inputs.dankMaterialShell.homeModules.dankMaterialShell.default
-                catppuccin.homeModules.catppuccin
-              ];
+        #  -- workstation -- #
+
+        nikkiworkstation = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs;
+            pkgs-stable = import nixpkgs-stable {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
             };
-
-            # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
-          }
-          nur.modules.nixos.default
-          nix-flatpak.nixosModules.nix-flatpak
-          ./hosts/minibook/configuration.nix
-        ];
-      };
-
-      #  -- workstation --
-
-      nixosConfigurations.nikkiworkstation = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          pkgs-stable = import nixpkgs-stable {
-            system = "x86_64-linux";
-            config.allowUnfree = true;
           };
+          modules = [
+            {
+              nix.settings.trusted-users = [ "nikki" ];
+            }
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.nikki = {
+                imports = [
+                  ./home/hosts/workstation.nix
+                  inputs.dankMaterialShell.homeModules.dankMaterialShell.default
+                  inputs.catppuccin.homeModules.catppuccin
+                ];
+              };
+            }
+            inputs.catppuccin.nixosModules.catppuccin
+            inputs.home-manager.nixosModules.home-manager
+            inputs.dankMaterialShell.nixosModules.greeter
+            inputs.nix-flatpak.nixosModules.nix-flatpak
+            ./hosts/workstation/configuration.nix
+          ];
         };
-        modules = [
-          {
-            nix.settings.trusted-users = [ "nikki" ];
-          }
-          catppuccin.nixosModules.catppuccin
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.nikki = {
-              imports = [
-                ./home-manager/home.nix
-                ./home-manager/niri/niri.nix
-                ./home-manager/sway/sway.nix
-                inputs.dankMaterialShell.homeModules.dankMaterialShell.default
-                catppuccin.homeModules.catppuccin
-              ];
+
+        #  -- home server -- #
+
+        tcenter = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs;
+            pkgs-stable = import nixpkgs-stable {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
             };
-          }
-          inputs.dankMaterialShell.nixosModules.greeter
-          nix-flatpak.nixosModules.nix-flatpak
-          ./hosts/workstation/configuration.nix
-        ];
-      };
-
-      #  -- home server --
-
-      nixosConfigurations.tcenter = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          pkgs-stable = import nixpkgs-stable {
-            system = "x86_64-linux";
-            config.allowUnfree = true;
           };
+          modules = [
+            ./hosts/tcenter/configuration.nix
+          ];
         };
-        modules = [
-          {
-            nix.settings.trusted-users = [ "admin" ];
-          }
-          ./hosts/tcenter/configuration.nix
-        ];
       };
     };
 }

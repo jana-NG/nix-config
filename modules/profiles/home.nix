@@ -11,6 +11,7 @@
       wineWowPackages.waylandFull
       pinta
       qdiskinfo
+      xfce.ristretto
     ])
 
     ++
