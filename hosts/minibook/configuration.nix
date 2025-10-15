@@ -11,6 +11,15 @@
     ../../environment/niri.nix
   ];
 
+  services.logind.settings.Login = {
+    HandlePowerKey = "suspend";
+    HandleLidSwitch = "suspend";
+  };
+
+  hardware.chuwi-minibook-x = {
+    mountMatrix = "0,-1,0;1,0,0;0,0,1"; # For Chuwi Minibook X N100
+  };
+
   boot.kernelParams = [
     "fbcon=rotate:1"
   ];
