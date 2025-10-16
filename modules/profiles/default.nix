@@ -54,6 +54,10 @@
       kdePackages.konsole
       kdePackages.dolphin
       kdePackages.qtsvg
+      kdePackages.ffmpegthumbs
+
+      kdePackages.kdegraphics-thumbnailers
+
       kdePackages.kio-fuse # to mount remote filesystems via FUSE
       kdePackages.kio-extras # extra protocols support (sftp, fish and more)
       kdePackages.ark
