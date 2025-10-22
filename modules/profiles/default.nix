@@ -6,8 +6,11 @@
 }:
 {
   # Install firefox.
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
   programs.firefox.enable = true;
-  programs.kdeconnect.enable = true;
 
   #Add Fonts
   fonts.fontDir.enable = true;
