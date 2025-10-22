@@ -79,7 +79,41 @@
             inputs.catppuccin.nixosModules.catppuccin
             inputs.home-manager.nixosModules.home-manager
             inputs.nix-flatpak.nixosModules.nix-flatpak
+            inputs.dankMaterialShell.nixosModules.greeter
             ./hosts/x13g1amd/configuration.nix
+          ];
+        };
+
+        nikkit440p = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs;
+            pkgs-stable = import nixpkgs-stable {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
+            };
+          };
+          modules = [
+            {
+              nix.settings.trusted-users = [ "nikki" ];
+            }
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.nikki = {
+                imports = [
+                  ./home/hosts/t440p.nix
+                  inputs.dankMaterialShell.nixosModules.greeter
+                  inputs.catppuccin.homeModules.catppuccin
+                  inputs.dankMaterialShell.homeModules.dankMaterialShell.default
+                ];
+              };
+            }
+            inputs.catppuccin.nixosModules.catppuccin
+            inputs.home-manager.nixosModules.home-manager
+            inputs.nix-flatpak.nixosModules.nix-flatpak
+            inputs.dankMaterialShell.nixosModules.greeter
+            ./hosts/t440p/configuration.nix
           ];
         };
         #  -- minibook x --
