@@ -70,7 +70,6 @@
               home-manager.users.nikki = {
                 imports = [
                   ./home/hosts/x13g1amd.nix
-                  inputs.dankMaterialShell.nixosModules.greeter
                   inputs.catppuccin.homeModules.catppuccin
                   inputs.dankMaterialShell.homeModules.dankMaterialShell.default
                 ];
@@ -103,7 +102,6 @@
               home-manager.users.nikki = {
                 imports = [
                   ./home/hosts/t440p.nix
-                  inputs.dankMaterialShell.nixosModules.greeter
                   inputs.catppuccin.homeModules.catppuccin
                   inputs.dankMaterialShell.homeModules.dankMaterialShell.default
                 ];
