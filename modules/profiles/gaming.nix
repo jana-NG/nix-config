@@ -35,6 +35,7 @@
     (with pkgs; [
       prismlauncher
       steamtinkerlaunch
+      ryubing
       protonup
       mangohud
       heroic
