@@ -13,6 +13,7 @@
     ../../modules/profiles/dev.nix
     ../../modules/profiles/home.nix
     ../../modules/profiles/gaming.nix
+    ../../modules/m6lite.nix
     ../../environment/niri.nix
   ];
   boot.kernelPackages = pkgs.linuxPackages_zen;
@@ -25,13 +26,10 @@
       ddcciNode0 = "/sys/bus/i2c/devices/i2c-10/new_device";
       ddcciDev1 = "AMDGPU DM aux hw bus 2";
       ddcciNode1 = "/sys/bus/i2c/devices/i2c-11/new_device";
-      vendorKeychron = "3434";
-      deviceM6liteUSB = "d064";
     in
     ''
       SUBSYSTEM=="i2c", ACTION=="add", ATTR{name}=="${ddcciDev0}", RUN+="${bash} -c 'sleep 30; printf ddcci\ 0x37 > ${ddcciNode0}'"
       SUBSYSTEM=="i2c", ACTION=="add", ATTR{name}=="${ddcciDev1}", RUN+="${bash} -c 'sleep 30; printf ddcci\ 0x37 > ${ddcciNode1}'"
-      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="${vendorKeychron}", ATTRS{idProduct}=="${deviceM6liteUSB}", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
     '';
 
   networking.hostName = "nikkiworkstation"; # Define your hostname.

@@ -9,12 +9,14 @@
     ../../modules/profiles/home.nix
     ../../modules/profiles/gaming.nix
     ../../environment/niri.nix
+    ../../modules/m6lite.nix
   ];
-
-  boot.kernelPackages = pkgs.linuxPackages_zen;
-  boot.kernelParams = [
-    "acpi_backlight=native"
-  ];
+  boot = {
+    kernelPackages = pkgs.linuxPackages_zen;
+    kernelParams = [
+      "acpi_backlight=native"
+    ];
+  };
   services.logind.settings.Login = {
     HandlePowerKey = "suspend";
     HandleLidSwitch = "suspend";
@@ -22,26 +24,13 @@
   systemd.sleep.extraConfig = ''
     HibernateMode=shutdown
     SuspendState=mem
-    MemorySleepMode=s2idle
+    MemorySleepMode=deep
   '';
   networking.hostName = "nikkix13g1"; # Define your hostname.
 
   # Power Management
   powerManagement.enable = true;
-  services.power-profiles-daemon.enable = false;
-  powerManagement.cpuFreqGovernor = "schedutil";
-  services.auto-cpufreq = {
-    enable = true;
-    settings = {
-      battery = {
-        turbo = "never";
-        platform_profile = "low-power";
-        enable_thresholds = true;
-        start_threshold = 80;
-        stop_threshold = 90;
-      };
-    };
-  };
+  services.power-profiles-daemon.enable = true;
 
   # block bluetooth to prevent it disappearing
   powerManagement.powerDownCommands = ''
@@ -87,6 +76,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.cudaSupport = true;
   nixpkgs.config.permittedInsecurePackages = [
     "olm-3.2.16"
   ];

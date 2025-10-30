@@ -36,7 +36,7 @@
       prismlauncher
       steamtinkerlaunch
       ryubing
-      protonup
+      protonup-qt
       mangohud
       heroic
     ])
