@@ -42,7 +42,7 @@
       libsecret
       nixfmt-rfc-style
       haruna
-      nvtopPackages.full
+      nvtopPackages.amd
       xsettingsd
       xorg.xrdb
       ffmpeg-full
