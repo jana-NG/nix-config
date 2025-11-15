@@ -5,7 +5,6 @@
     (with pkgs; [
       signal-desktop
       ani-cli
-      protonvpn-gui
       qbittorrent
       yt-dlp
       wineWowPackages.waylandFull
