@@ -5,11 +5,27 @@
 {
 
   imports = [
-    ../hypridle.nix
+
   ];
 
   programs.dankMaterialShell = {
     enable = true;
+
+    systemd = {
+      enable = true; # Systemd service for auto-start
+      restartIfChanged = true; # Auto-restart dms.service when dankMaterialShell changes
+    };
+
+    # Core features
+    enableSystemMonitoring = true;
+    enableClipboard = true;
+    enableVPN = true;
+    enableBrightnessControl = true;
+    enableColorPicker = true;
+    enableDynamicTheming = true;
+    enableAudioWavelength = true;
+    enableCalendarEvents = true;
+    enableSystemSound = true;
   };
 
   home.file = {
