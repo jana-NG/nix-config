@@ -1,21 +1,15 @@
 # this file contains development stuff
-{ pkgs, pkgs-stable, ... }:
+{ pkgs, ... }:
 {
-  environment.systemPackages =
-    (with pkgs; [
-      dtc
-      rustup
-      gcc
-      vscode-fhs
-      openssl
-      pkg-config
-      rpi-imager
-    ])
-
-    ++
-
-      (with pkgs-stable; [
-        arduino-ide
-      ]);
+  environment.systemPackages = with pkgs; [
+    dtc
+    rustup
+    gcc
+    vscode-fhs
+    openssl
+    pkg-config
+    rpi-imager
+    arduino-ide
+  ];
   # services.flatpak.packages = [ ];
 }

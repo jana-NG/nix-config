@@ -1,24 +1,16 @@
 # this file contains packages for my personal systems
-{ pkgs, pkgs-stable, ... }:
+{ pkgs, ... }:
 {
-  environment.systemPackages =
-    (with pkgs; [
-      signal-desktop
-      ani-cli
-      qbittorrent
-      yt-dlp
-      wineWowPackages.waylandFull
-      pinta
-      qdiskinfo
-      xfce.ristretto
-    ])
-
-    ++
-
-      (with pkgs-stable; [
-        gparted
-        exfatprogs
-      ]);
+  environment.systemPackages = with pkgs; [
+    signal-desktop
+    ani-cli
+    qbittorrent
+    yt-dlp
+    wineWowPackages.waylandFull
+    pinta
+    qdiskinfo
+    xfce.ristretto
+  ];
   services.flatpak.packages = [
     "com.github.iwalton3.jellyfin-media-player"
     "com.geekbench.Geekbench6"

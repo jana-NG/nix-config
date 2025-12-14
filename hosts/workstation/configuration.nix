@@ -2,7 +2,8 @@
 {
   config,
   pkgs,
-  pkgs-stable,
+  pkgs-25-05,
+  pkgs-unstable,
   ...
 }:
 {
@@ -14,16 +15,10 @@
     ../../modules/profiles/home.nix
     ../../modules/profiles/gaming.nix
     ../../modules/m6lite.nix
-    /**
-      ../../modules/proton-vpn.nix*
-    */
+    ../../modules/proton-vpn.nix
     ../../environment/niri.nix
   ];
-  boot.kernelPackages =
-    /**
-      pkgs.linuxPackages_zen*
-    */
-    pkgs.linuxPackages_6_12;
+  boot.kernelPackages = pkgs-unstable.linuxPackages_zen;
   boot.extraModulePackages = with config.boot.kernelPackages; [ ddcci-driver ];
   boot.kernelModules = [ "ddcci-backlight" ];
   services.udev.extraRules =
@@ -61,7 +56,7 @@
       "wheel"
     ];
     shell = pkgs.zsh;
-    packages = with pkgs-stable; [
+    packages = with pkgs-25-05; [
       citrix_workspace
     ];
   };

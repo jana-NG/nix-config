@@ -1,14 +1,12 @@
 # this file contains basic programs i use
 {
   pkgs,
-  pkgs-stable,
   ...
 }:
 {
   # Install firefox.
   programs.appimage = {
     enable = true;
-    binfmt = true;
   };
   programs.firefox.enable = true;
 
@@ -36,48 +34,40 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages =
-    (with pkgs; [
-      nil
-      libsecret
-      nixfmt-rfc-style
-      haruna
-      nvtopPackages.amd
-      xsettingsd
-      xorg.xrdb
-      ffmpeg-full
-      krita
-      qownnotes
-      kdePackages.kalk
-      kdePackages.filelight
-      kdePackages.krecorder
-      kdePackages.kclock
-      kdePackages.kate
-      kdePackages.neochat
-      kdePackages.konsole
-      kdePackages.dolphin
-      kdePackages.qtsvg
-      kdePackages.ffmpegthumbs
-
-      kdePackages.kdegraphics-thumbnailers
-
-      kdePackages.kio-fuse # to mount remote filesystems via FUSE
-      kdePackages.kio-extras # extra protocols support (sftp, fish and more)
-      kdePackages.ark
-      kdePackages.qtimageformats
-      kdePackages.kde-cli-tools
-      calibre
-    ])
-
-    ++
-
-      (with pkgs-stable; [
-        libreoffice-qt6
-        pciutils
-        usbutils
-        xorg.xeyes
-        drawio
-      ]);
+  environment.systemPackages = with pkgs; [
+    nil
+    libsecret
+    nixfmt-rfc-style
+    haruna
+    nvtopPackages.amd
+    xsettingsd
+    xorg.xrdb
+    ffmpeg-full
+    krita
+    qownnotes
+    kdePackages.kalk
+    kdePackages.filelight
+    kdePackages.krecorder
+    kdePackages.kclock
+    kdePackages.kate
+    kdePackages.neochat
+    kdePackages.konsole
+    kdePackages.dolphin
+    kdePackages.qtsvg
+    kdePackages.ffmpegthumbs
+    kdePackages.kdegraphics-thumbnailers
+    kdePackages.kio-fuse # to mount remote filesystems via FUSE
+    kdePackages.kio-extras # extra protocols support (sftp, fish and more)
+    kdePackages.ark
+    kdePackages.qtimageformats
+    kdePackages.kde-cli-tools
+    calibre
+    libreoffice-qt6
+    pciutils
+    usbutils
+    xorg.xeyes
+    drawio
+  ];
 
   # flatpak configuration
   services.flatpak.enable = true;

@@ -1,11 +1,7 @@
 # this file contains configuration for niri
 {
   pkgs,
-  inputs,
   lib,
-  /**
-    pkgs-stable,
-  */
   ...
 }:
 {
@@ -37,7 +33,9 @@
   };
 
   environment.systemPackages = with pkgs; [
-    inputs.quickshell.packages.${pkgs.system}.default
+    /**
+      inputs.quickshell.packages.${pkgs.system}.default
+    */
     xwayland-satellite
     cava
     cliphist

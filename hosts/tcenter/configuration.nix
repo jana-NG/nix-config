@@ -1,5 +1,5 @@
 # this file contains universal hardware config
-{ lib, pkgs-stable, ... }:
+{ pkgs-25-05, ... }:
 {
 
   imports = [
@@ -27,7 +27,7 @@
       "docker"
       "tcenterdrive"
     ];
-    packages = with pkgs-stable; [
+    packages = with pkgs-25-05; [
       git
       micro
     ];
@@ -65,7 +65,7 @@
       nrs = "sudo git -C /etc/nixos pull && sudo nixos-rebuild switch --flake path:/etc/nixos";
     };
   };
-  users.defaultUserShell = pkgs-stable.zsh;
+  users.defaultUserShell = pkgs-25-05.zsh;
   boot.loader.systemd-boot.configurationLimit = 4;
   nix.gc = {
     automatic = true;
@@ -107,7 +107,7 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = with pkgs-stable; [
+    extraPackages = with pkgs-25-05; [
       intel-media-driver # For Broadwell (2014) or newer processors. LIBVA_DRIVER_NAME=iHD
       libva-vdpau-driver # Previously vaapiVdpau
       intel-compute-runtime-legacy1

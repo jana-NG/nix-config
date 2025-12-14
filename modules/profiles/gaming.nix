@@ -1,5 +1,5 @@
 # this file contains xfce applications
-{ pkgs, pkgs-stable, ... }:
+{ pkgs, ... }:
 {
   programs.steam = {
     enable = true;
@@ -31,19 +31,14 @@
 
   programs.gamemode.enable = true;
 
-  environment.systemPackages =
-    (with pkgs; [
-      prismlauncher
-      steamtinkerlaunch
-      ryubing
-      protonup-qt
-      mangohud
-      heroic
-    ])
-
-    ++
-
-      (with pkgs-stable; [ ]);
+  environment.systemPackages = with pkgs; [
+    prismlauncher
+    steamtinkerlaunch
+    ryubing
+    protonup-qt
+    mangohud
+    heroic
+  ];
   services.flatpak.packages = [
     "com.steamgriddb.steam-rom-manager"
     "com.dec05eba.gpu_screen_recorder"
