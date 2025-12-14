@@ -13,14 +13,11 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-25-05.url = "github:NixOS/nixpkgs/nixos-25.05";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     catppuccin.url = "github:catppuccin/nix";
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -43,7 +40,8 @@
     {
       self,
       nixpkgs,
-      nixpkgs-stable,
+      nixpkgs-unstable,
+      nixpkgs-25-05,
       ...
     }@inputs:
     {
@@ -55,7 +53,7 @@
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs;
-            pkgs-stable = import nixpkgs-stable {
+            pkgs-unstable = import nixpkgs-unstable {
               system = "x86_64-linux";
               config.allowUnfree = true;
             };
@@ -87,7 +85,7 @@
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs;
-            pkgs-stable = import nixpkgs-stable {
+            pkgs-unstable = import nixpkgs-unstable {
               system = "x86_64-linux";
               config.allowUnfree = true;
             };
@@ -120,7 +118,7 @@
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs;
-            pkgs-stable = import nixpkgs-stable {
+            pkgs-unstable = import nixpkgs-unstable {
               system = "x86_64-linux";
               config.allowUnfree = true;
             };
@@ -154,7 +152,11 @@
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs;
-            pkgs-stable = import nixpkgs-stable {
+            pkgs-unstable = import nixpkgs-unstable {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
+            };
+            pkgs-25-05 = import nixpkgs-25-05 {
               system = "x86_64-linux";
               config.allowUnfree = true;
             };
@@ -186,13 +188,6 @@
 
         tcenter = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs;
-            pkgs-stable = import nixpkgs-stable {
-              system = "x86_64-linux";
-              config.allowUnfree = true;
-            };
-          };
           modules = [
             ./hosts/tcenter/configuration.nix
           ];
