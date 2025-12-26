@@ -15,6 +15,7 @@
     ../../modules/profiles/home.nix
     ../../modules/profiles/gaming.nix
     ../../modules/m6lite.nix
+    ../../modules/dawnpro2.nix
     ../../modules/proton-vpn.nix
     ../../environment/niri.nix
   ];
