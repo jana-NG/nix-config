@@ -9,6 +9,5 @@
     ../modules/catppuccin.nix
     ../modules/gtk.nix
     ../modules/qt.nix
-    ../modules/yazi.nix
   ];
 }
