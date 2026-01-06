@@ -5,11 +5,9 @@
     dtc
     rustup
     gcc
-    vscode-fhs
     openssl
     pkg-config
     rpi-imager
-    arduino-ide
+    zed-editor
   ];
-  # services.flatpak.packages = [ ];
 }

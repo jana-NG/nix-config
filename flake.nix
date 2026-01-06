@@ -13,8 +13,8 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-25-11.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-25-05.url = "github:NixOS/nixpkgs/nixos-25.05";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     catppuccin.url = "github:catppuccin/nix";
@@ -40,7 +40,7 @@
     {
       self,
       nixpkgs,
-      nixpkgs-unstable,
+      nixpkgs-25-11,
       nixpkgs-25-05,
       ...
     }@inputs:
@@ -53,7 +53,7 @@
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs;
-            pkgs-unstable = import nixpkgs-unstable {
+            pkgs-25-11 = import nixpkgs-25-11 {
               system = "x86_64-linux";
               config.allowUnfree = true;
             };
@@ -85,7 +85,7 @@
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs;
-            pkgs-unstable = import nixpkgs-unstable {
+            pkgs-25-11 = import nixpkgs-25-11 {
               system = "x86_64-linux";
               config.allowUnfree = true;
             };
@@ -118,7 +118,7 @@
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs;
-            pkgs-unstable = import nixpkgs-unstable {
+            pkgs-25-11 = import nixpkgs-25-11 {
               system = "x86_64-linux";
               config.allowUnfree = true;
             };
@@ -152,7 +152,7 @@
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs;
-            pkgs-unstable = import nixpkgs-unstable {
+            pkgs-25-11 = import nixpkgs-25-11 {
               system = "x86_64-linux";
               config.allowUnfree = true;
             };

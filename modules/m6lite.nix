@@ -3,10 +3,10 @@
 {
   services.udev.extraRules =
     let
-      vendorKeychron = "3434";
-      deviceM6lite = "d064";
+      vendor_keychron = "3434";
+      device_m6lite = "d064";
     in
     ''
-      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="${vendorKeychron}", ATTRS{idProduct}=="${deviceM6lite}", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="${vendor_keychron}", ATTRS{idProduct}=="${device_m6lite}", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
     '';
 }

@@ -20,6 +20,5 @@
     "com.discordapp.Discord"
     "de.bund.ausweisapp.ausweisapp2"
     "com.usebottles.bottles"
-    "org.nickvision.money"
   ];
 }
