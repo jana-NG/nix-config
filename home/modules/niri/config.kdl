@@ -18,6 +18,7 @@ input {
     mouse {
         accel-speed 0.2
         accel-profile "flat"
+        scroll-method "on-button-down"
     }
 
     trackpoint {
@@ -29,6 +30,10 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     focus-follows-mouse max-scroll-amount="0%"
+}
+
+clipboard {
+    disable-primary
 }
 
 cursor {
