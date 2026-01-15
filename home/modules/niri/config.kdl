@@ -19,6 +19,7 @@ input {
         accel-speed 0.2
         accel-profile "flat"
         scroll-method "on-button-down"
+        scroll-button 276
     }
 
     trackpoint {

@@ -16,6 +16,7 @@
     ../../modules/m6lite.nix
     ../../modules/dawnpro2.nix
     ../../modules/proton-vpn.nix
+    ../../modules/vivaldi.nix
     ../../environment/niri.nix
   ];
   boot.kernelPackages = pkgs.linuxPackages_zen;
@@ -40,6 +41,10 @@
   powerManagement.enable = true;
   services.power-profiles-daemon.enable = true;
 
+  systemd.sleep.extraConfig = ''
+    HibernateMode=shutdown
+  '';
+
   # Firmware updates
   hardware.enableRedistributableFirmware = true;
   services.fwupd.enable = true;
@@ -56,9 +61,9 @@
       "wheel"
     ];
     shell = pkgs.zsh;
-    packages = with pkgs-25-05; [
-      citrix_workspace
-      windterm
+    packages = [
+      pkgs-25-05.citrix_workspace
+      pkgs.windterm
     ];
   };
 
