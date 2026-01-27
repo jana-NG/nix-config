@@ -9,6 +9,7 @@
     enable = true;
   };
   programs.firefox.enable = true;
+  programs.localsend.enable = true;
 
   #Add Fonts
   fonts.fontDir.enable = true;
