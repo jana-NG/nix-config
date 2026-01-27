@@ -64,6 +64,9 @@
     kdePackages.kde-cli-tools
     calibre
     libreoffice-qt6
+    hunspell # spell checker
+    hunspellDicts.en-us-large # english dictionary
+    hunspellDicts.de-de # german dictionary
     pciutils
     usbutils
     xorg.xeyes
