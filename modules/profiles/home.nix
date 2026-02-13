@@ -6,10 +6,10 @@
     ani-cli
     qbittorrent
     yt-dlp
-    wineWowPackages.waylandFull
+    wineWow64Packages.waylandFull
     pinta
     qdiskinfo
-    xfce.ristretto
+    ristretto
   ];
   services.flatpak.packages = [
     "com.github.iwalton3.jellyfin-media-player"

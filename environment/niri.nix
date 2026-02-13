@@ -23,7 +23,7 @@
     HandlePowerKey = lib.mkDefault "ignore";
   };
   #enable dms greetd implementation
-  programs.dankMaterialShell = {
+  programs.dank-material-shell = {
     greeter = {
       enable = true;
       compositor.name = "niri";

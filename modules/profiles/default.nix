@@ -38,11 +38,11 @@
   environment.systemPackages = with pkgs; [
     nil
     libsecret
-    nixfmt-rfc-style
+    nixfmt
     haruna
     nvtopPackages.amd
     xsettingsd
-    xorg.xrdb
+    xrdb
     ffmpeg-full
     krita
     qownnotes
@@ -51,7 +51,6 @@
     kdePackages.krecorder
     kdePackages.kclock
     kdePackages.kate
-    kdePackages.neochat
     kdePackages.konsole
     kdePackages.dolphin
     kdePackages.qtsvg
@@ -69,7 +68,7 @@
     hunspellDicts.de-de # german dictionary
     pciutils
     usbutils
-    xorg.xeyes
+    xeyes
     drawio
   ];
 
@@ -82,6 +81,7 @@
     "md.obsidian.Obsidian"
     "org.gtk.Gtk3theme.Breeze"
     "org.kde.kamoso"
+    "in.cinny.Cinny"
   ];
   services.flatpak.overrides = {
     global = {
