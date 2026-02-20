@@ -62,7 +62,6 @@
     kdePackages.qtimageformats
     kdePackages.kde-cli-tools
     calibre
-    libreoffice-qt6
     hunspell # spell checker
     hunspellDicts.en-us-large # english dictionary
     hunspellDicts.de-de # german dictionary
@@ -82,6 +81,7 @@
     "org.gtk.Gtk3theme.Breeze"
     "org.kde.kamoso"
     "in.cinny.Cinny"
+    "com.collaboraoffice.Office"
   ];
   services.flatpak.overrides = {
     global = {
