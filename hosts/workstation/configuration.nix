@@ -19,6 +19,7 @@
     ../../modules/vivaldi.nix
     ../../environment/niri.nix
   ];
+  # hibernation is broken, see: https://gitlab.freedesktop.org/drm/amd/-/issues/4853
   boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.extraModulePackages = with config.boot.kernelPackages; [ ddcci-driver ];
   boot.kernelModules = [ "ddcci-backlight" ];

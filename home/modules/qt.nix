@@ -4,9 +4,10 @@
 }:
 {
   home.packages = with pkgs; [
-    kdePackages.qtstyleplugin-kvantum
+    kdePackages.qt6ct
+    kdePackages.breeze
   ];
   qt.enable = true;
-  qt.style.name = "kvantum";
-  qt.platformTheme.name = "kvantum";
+  qt.platformTheme.name = "qt6ct";
+  qt.style.name = "qt6ct-style";
 }
