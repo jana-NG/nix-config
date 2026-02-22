@@ -14,18 +14,8 @@
       gtk-application-prefer-dark-theme = "1";
     };
     theme = {
-      name = "Colloid-Purple-Dark-Compact-Catppuccin/";
-      package = (
-        pkgs.colloid-gtk-theme.override {
-          themeVariants = [ "purple" ];
-          colorVariants = [ "dark" ];
-          sizeVariants = [ "compact" ];
-          tweaks = [
-            "catppuccin"
-            "normal"
-          ];
-        }
-      );
+      name = "adw-gtk3-dark";
+      package = (pkgs.adw-gtk3);
     };
     iconTheme = {
       name = "Colloid-Purple-Catppuccin-Dark";

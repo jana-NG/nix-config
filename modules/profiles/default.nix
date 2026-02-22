@@ -29,6 +29,8 @@
     nerd-fonts.symbols-only
     corefonts
   ];
+  # Fix Emoji Rendering in Firefox
+  fonts.fontconfig.useEmbeddedBitmaps = true;
   # Fix for dolphin application menu
   environment.etc."/xdg/menus/applications.menu".text =
     builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
