@@ -8,6 +8,5 @@
     openssl
     pkg-config
     rpi-imager
-    zed-editor
   ];
 }

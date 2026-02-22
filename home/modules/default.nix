@@ -53,5 +53,7 @@
     package = pkgs.micro-with-wl-clipboard;
   };
 
+  programs.zed-editor.enable = true;
+
   home.stateVersion = "24.11";
 }
